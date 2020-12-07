@@ -1,0 +1,14 @@
+{
+  "name": "iliter",
+  "version": "1.0.0",
+  "description": "MY own highlighter",
+  "main": "source/",
+  "dependencies": {
+  },
+  "keywords": [
+    "highlight",
+    "source"
+  ],
+  "author": "octoxalis",
+  "license": "MIT"
+}
