@@ -1,0 +1,57 @@
+/*=== FONT ===*/
+:root
+{
+  --BASE_U_n:     12;      /* font base unit */
+  --BASE_MIN_n:   1.5;
+  --SCREEN_MIN_n: 400;
+  --SCREEN_MAX_n: 1600;
+
+
+
+  --font_size:calc( ( var(--BASE_U_n) * var(--BASE_MIN_n) * 1px )
+                     + ( var(--BASE_U_n) * var(--BASE_MIN_n) * 2 - ( var(--BASE_U_n) * var(--BASE_MIN_n ) ) )
+                     * ( 100vw - (var(--SCREEN_MAX_n) * 1px) )
+                     / ( var(--SCREEN_MAX_n) - var(--SCREEN_MIN_n) )
+                   );
+  --font_u:calc( var(--font_size) * 1 ); /* font unit - can be adjusted */
+
+  --font_body: `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Droid Sans', Helvetica Neue, 'Fira Sans', sans-serif`;
+  --font_mono:  `system-ui, -apple-system, BlinkMacSystemFont, 'Courier New', Courier, 'Ubuntu Mono', 'Liberation Mono', monospace`;
+}
+
+
+
+/*=== FAMILY ===*/
+
+body,
+body *,
+__                     {font-family:var(--font_body)}
+
+
+
+/*=== SIZE ===*/
+
+body,
+body *,
+body *:before,
+body *:after,
+__                     {font-size:calc( var(--font_u)  * var(--size_ratio) )}
+
+
+body,
+body *,
+__                     {--size_ratio:1.5}
+
+
+
+
+/*=== WEIGHT ===*/
+
+
+body,
+body *,
+__                     {font-weight:300}
+
+
+
+/*=== STYLE ===*/

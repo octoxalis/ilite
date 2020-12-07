@@ -1,0 +1,5 @@
+.env
+node_modules
+virtualpage.code-workspace
+_workspace_
+_perf.js

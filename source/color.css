@@ -1,0 +1,32 @@
+:root
+{
+  --c_hue_h: 0;
+
+--c_sat_hi_4: 94%;
+--c_sat_hi_2: 72%;
+--c_sat_ne :  50%;
+--c_sat_lo_2: 28%;
+--c_sat_lo_4: 6%;
+
+--c_lum_hi_4: 94%;
+--c_lum_hi_3: 83%;
+--c_lum_hi_2: 72%;
+--c_lum_hi_1: 61%;
+--c_lum_ne  : 50%;
+--c_lum_lo_1: 39%;
+--c_lum_lo_2: 28%;
+--c_lum_lo_3: 17%;
+--c_lum_lo_4: 6%;
+
+--c_high_1: hsla( calc( var(--c_hue_h) + 0   ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_2: hsla( calc( var(--c_hue_h) + 40  ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_3: hsla( calc( var(--c_hue_h) + 80  ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_4: hsla( calc( var(--c_hue_h) + 120 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_5: hsla( calc( var(--c_hue_h) + 160 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_6: hsla( calc( var(--c_hue_h) + 200 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_7: hsla( calc( var(--c_hue_h) + 240 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_8: hsla( calc( var(--c_hue_h) + 280 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+--c_high_9: hsla( calc( var(--c_hue_h) + 320 ) var(--c_sat_hi4) var(--c_lum_ne)/1 );
+}
+
+
