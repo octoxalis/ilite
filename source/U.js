@@ -1,54 +1,7 @@
 const U_o = new Object( null )
 
-U_o.tag_s = 'i'
-
-
-U_o.entity_o =
-{
-  line_s:  '₀line₀',   //: null
-  block_s: '₀block₀',  //: null
-  grave_s: '₀grave₀',  //: &grave;
-  apos_s:  '₀apos₀',   //: &apos;
-  quot_s:  '₀quot₀',   //: &quot;
-
-  amp_s:   '₀amp₀',    //: &amp;
-  lt_s:    '₀lt₀',     //: &lt;
-  gt_s:    '₀gt₀',     //: &gt;
-}
-
-
-
-U_o.regex_o =
-{
-  line_re:  /((?:^|\s)\/\/(.+?)$)/gms,  //: //Comment
-  block_re: /(\/\*.*?\*\/)/gms,       //: /*Comment*/
-  grave_re: /(`[^`]*`)/gms,           //: `String`
-  apos_re:  /('[^']*')/gms,           //: 'String'
-  quot_re:  /("[^"]*")/gms,           //: "String"
-
-  num_re:   /__/gms,    //:
-  res_re:   /__/gms,    //:
-  loop_re:  /__/gms,    //:
-  cont_re:  /__/gms,    //:
-  type_re:  /__/gms,    //:
-  var_re:   /__/gms,    //:
-  punc_re:  /__/gms,    //:
-  group_re: /__/gms,    //:
-  op_re:    /__/gms,    //:
-  prop_re:  /__/gms,    //:
-}
-
-
-
-U_o.store_o =
-{
-  apos_a:  [],
-  quot_a:  [], 
-  grave_a: [],
-  line_a:  [],
-  block_a: [],
-}
-
+U_o.TAG_s = 'i'
+U_o.ENT_s = '₀'
 
 
 U_o.raw__s =
@@ -79,14 +32,14 @@ U_o.takeOut__s =  //: extract quoted strings
 (
   code_s,
   regex_s,
-  store_a
+  store_a,
+  config_o
 ) =>
 {
   let entity_s =
-    U_o
-      .entity_o[`${regex_s}_s`]
+    `${U_o.ENT_s}${regex_s}${U_o.ENT_s}`
   let regex_re =
-    U_o
+    config_o
       .regex_o[`${regex_s}_re`]
   let index_n = -1
   ;[...code_s.matchAll( regex_re )]
@@ -119,10 +72,13 @@ U_o.takeBack__s =  //: restore quoted strings
   code_s,
   regex_s,
   store_a
+  //-- config_o    //: not used
 ) =>
 {
-  let entity_s = U_o.entity_o[`${regex_s}_s`]
-  let regex_re = new RegExp( `${entity_s}([0-9]+)${entity_s}`, 'gms' )
+  let entity_s =
+    `${U_o.ENT_s}${regex_s}${U_o.ENT_s}`
+  let regex_re =
+    new RegExp( `${entity_s}([0-9]+)${entity_s}`, 'gms' )
   ;[...code_s.matchAll( regex_re )]
     .forEach
     (
@@ -137,7 +93,7 @@ U_o.takeBack__s =  //: restore quoted strings
             .replace
             (
               in_s,
-              `<${U_o.tag_s} class="i_${regex_s}">${out_s}</${U_o.tag_s}>`
+              `<${U_o.TAG_s} class="i_${regex_s}">${out_s}</${U_o.TAG_s}>`
             )
       }
     )
@@ -146,41 +102,42 @@ U_o.takeBack__s =  //: restore quoted strings
 
 
 
+
+
+
+
 U_o.exclude__s =  //: extract/restore quoted strings or comments
 (
   way_s,    //: 'Out' | 'Back'
   code_s,
-  store_o   //: empty when 'Out'
+  store_o,   //: empty when 'Out'
+  config_o,  //:
 ) =>
 {
-  ;[        //!!! order matters
-    'line',
-    'block',
-    'grave',
-    'apos',
-    'quot',
-  ]
-  .forEach
-  (
-    regex_s =>
-    {
-      if ( !store_o[`${regex_s}`] )
+  config_o
+    .exclude_a
+    .forEach
+    (
+      regex_s =>
       {
-        store_o[`${regex_s}`] = []
-      }
-      let return_a =
-        U_o
-          [`take${way_s}__s`]
-          (
-            code_s,
-            regex_s,
-            store_o[`${regex_s}`]
-          )
-      code_s =
-        return_a[0]
-      store_o[`${regex_s}`] =
-        return_a[1]
-   }
-  )
+        if ( !store_o[`${regex_s}`] )
+        {
+          store_o[`${regex_s}`] = []
+        }
+        let return_a =
+          U_o
+            [`take${way_s}__s`]
+            (
+              code_s,
+              regex_s,
+              store_o[`${regex_s}`],
+              config_o
+            )
+        code_s =
+          return_a[0]
+        store_o[`${regex_s}`] =
+          return_a[1]
+     }
+    )
   return [ code_s, store_o ]
 }

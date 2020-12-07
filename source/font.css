@@ -1,7 +1,7 @@
 /*=== FONT ===*/
 :root
 {
-  --BASE_U_n:     12;      /* font base unit */
+  --BASE_U_n:     18;      /* font base unit */
   --BASE_MIN_n:   1.5;
   --SCREEN_MIN_n: 400;
   --SCREEN_MAX_n: 1600;

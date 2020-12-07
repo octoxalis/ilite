@@ -50,6 +50,50 @@ void function
   //~~         code.innerHTML = `<ol>${format(code)}</ol>`
   //~~ }()
 
+
+  regex_o =
+  {
+    line_re:  /((?:^|\s)\/\/(.+?)$)/gms,  //: //Comment
+    block_re: /(\/\*.*?\*\/)/gms,         //: /*Comment*/
+    grave_re: /(`[^`]*`)/gms,             //: `String`
+    apos_re:  /('[^']*')/gms,             //: 'String'
+    quot_re:  /("[^"]*")/gms,             //: "String"
+  
+    num_re:   /^(?:-(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))|(?:0|(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))))$/gms,    //: Number
+    res_re:   /__/gms,    //:
+    loop_re:  /__/gms,    //:
+    cont_re:  /__/gms,    //:
+    type_re:  /__/gms,    //:
+    var_re:   /__/gms,    //:
+    punc_re:  /__/gms,    //:
+    group_re: /__/gms,    //:
+    op_re:    /__/gms,    //:
+    prop_re:  /__/gms,    //:
+  }
+
+
+  exclude_a =        //!!! order matters
+    [
+      'line',
+      'block',
+      'grave',
+      'apos',
+      'quot',
+    ]
+
+  pawl_a =
+    [
+
+    ]
+  
+  config_o =
+  {
+    regex_o: regex_o,
+    exclude_a: exclude_a,
+    pawl_a: pawl_a,
+  }
+
+
   const code_e =
     document
       .querySelector('#code')
@@ -57,28 +101,32 @@ void function
     U_o
       .raw__s( code_e.innerHTML )
   ;console.log( code_s + '\n==================================' )
-  //-----------------------------
+
+
   const out_o =
     U_o
       .exclude__s
       (
         'Out',
         code_s,
-        {}      //: store_o
+        {},      //: store_o
+        config_o
       )
   ;console.log( out_o[0] )
-  ;console.log( out_o[1] + '\n=================================='  )
-  //-----------------------------
+  ;console.table( out_o[1]  )
+
+
   const back_o =
     U_o
       .exclude__s
       (
         'Back',
         out_o[0],
-        out_o[1]
-        )
+        out_o[1],
+        config_o
+      )
   ;console.log( back_o[0] )
-  ;console.log( back_o[1] )
-  code_e.innerHTML =
-    back_o[0]
+  ;console.table( back_o[1] )
+  //code_e.innerHTML =
+  //  back_o[0]
 }()
