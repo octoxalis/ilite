@@ -1,0 +1,68 @@
+:root
+{
+}
+
+
+html, body {
+  font-family: Arial;
+}
+
+/* === LAYOUT === */
+code
+{
+  font-family: Consolas,"courier new";
+  color: hsla(0 0% 0%/1);
+  background: hsla(0 0% 100%/1);
+  padding: 10px;
+  font-size: 100%;
+  display: block;
+  white-space: pre;
+  overflow: auto;
+}
+
+code > ol
+{
+  display: flex;
+  flex-direction: column;
+  min-height: 1em;
+}
+
+code li::marker
+{
+  display: inline-block;
+  width: 10ch;
+  /*?? text-align: right;*/
+  -webkit-select: none;
+  color: hsla(var(--c_hue_h) 50% 0%/.25);
+}
+
+code li.hi
+{
+  background-color: hsla( 210 28% 6%/1);
+}
+
+code li.hi::marker
+{
+  color: red;
+  background-color: white;
+}
+
+
+/*=== HIGHLIGHT ===*/
+
+[class^="i_"],
+__                     {font-style:normal}
+
+.i_block,
+.i_line,
+__                     {background:var(--c_ilite_ne); opacity:.5}
+
+.i_apos,
+.i_quot,
+__                     {background:var(--c_ilite_5)}
+
+.i_grave,
+__                     {background:var(--c_ilite_55)}
+
+.i_literal,
+__                     {background:var(--c_ilite_15)}
