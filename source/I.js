@@ -1,9 +1,10 @@
-//=== I.js === ilier main module
+//=== I.js === iliter main module
 
 const I_o =
 {
-  TAG_s  : 'i',
-  MARK_s : '₀',
+  TAG_s  :  'i',
+  MARK_s :  '₀',
+  BOUND_s : '_b',
 
 
 escape__s:  //: escape entities inside String
@@ -35,16 +36,16 @@ raw__s:
 exit__s:
 (
   code_s,
-  regex_s,
+  switch_s,
   aside_a,
   lang_o
 ) =>
 {
   let mark_s =
-    `${I_o.MARK_s}${regex_s}${I_o.MARK_s}`
+    `${I_o.MARK_s}${switch_s}${I_o.MARK_s}`
   let regex_re =
     lang_o
-      .regex_o[`${regex_s}_re`]
+      .regex_o[`${switch_s}_re`]
   let index_n = -1
   ;[...code_s.matchAll( regex_re )]
     .forEach
@@ -75,13 +76,13 @@ exit__s:
 enter__s:
 (
   code_s,
-  regex_s,
+  switch_s,
   aside_a,
   lang_o,
 ) =>
 {
   let mark_s =
-    `${I_o.MARK_s}${regex_s}${I_o.MARK_s}`
+    `${I_o.MARK_s}${switch_s}${I_o.MARK_s}`
   let regex_re =
     new RegExp( `${mark_s}([0-9]+)${mark_s}`, 'gms' )
   ;[...code_s.matchAll( regex_re )]
@@ -91,8 +92,11 @@ enter__s:
       {
         const exit_s =
           match_a[0]
+        const escape_s =
+          I_o
+            .escape__s( aside_a[+match_a[1]] )
         let enter_s =
-        `<${I_o.TAG_s} class="i_${regex_s}">${aside_a[+match_a[1]]}</${I_o.TAG_s}>`    //: Number cast
+        `<${I_o.TAG_s} class="i_${switch_s}">${escape_s}</${I_o.TAG_s}>`    //: Number cast
         if ( lang_o.callback__s )
         {
           enter_s =
@@ -100,7 +104,7 @@ enter__s:
               .callback__s
               (
                 enter_s,
-                regex_s
+                switch_s
               )
         }
         code_s =
@@ -130,24 +134,24 @@ aside__s:  //: (exit|enter) (strings|comments)
     .aside_a
     .forEach
     (
-      regex_s =>
+      switch_s =>
       {
-        if ( !aside_o[`${regex_s}`] )
+        if ( !aside_o[`${switch_s}`] )
         {
-          aside_o[`${regex_s}`] = []
+          aside_o[`${switch_s}`] = []
         }
         let return_a =
           I_o
             [`${way_s}__s`]
             (
               code_s,
-              regex_s,
-              aside_o[`${regex_s}`],
+              switch_s,
+              aside_o[`${switch_s}`],
               IND_o.lang_o
             )
         code_s =
           return_a[0]
-        aside_o[`${regex_s}`] =
+        aside_o[`${switch_s}`] =
           return_a[1]
      }
     )
@@ -157,36 +161,92 @@ aside__s:  //: (exit|enter) (strings|comments)
 
 
 
-spin__s:
+regex__re:
+(
+  switch_s,
+  lang_o,
+) =>
+{
+  const regex_ =
+    lang_o
+      .regex_o
+      [`${switch_s}_a`]
+  if ( Array.isArray( regex_ ) )
+  {
+    return (
+      new RegExp( `\\b(${regex_.join( '|' )})(?!=)\\b`, 'g' )
+    )
+  }
+  return (
+    lang_o
+      .regex_o
+      [`${switch_s}_re`]
+  )
+}
+,
+
+
+
+switch__s:
 (
   code_s,
-  lang_o,    //:
+  lang_o,
+  order_s,    //:
 ) =>
 {
   lang_o
-    .spin_a
+    [`switch${order_s}_a`]
     .forEach
     (
-      regex_s =>
+      switch_s =>
       {
-        let regex_re =
+        let bound_s = ''
+        const at_n = switch_s.indexOf( I_o.BOUND_s )
+        if ( at_n > -1 )
+        {
+          bound_s = '\\b'
+          switch_s =
+            switch_s
+              .slice
+              (
+                0,
+                -I_o.BOUND_s.length
+              )
+        }
+        let replace_s = ''
+        let regex_a =
           lang_o
-            .regex_o[`${regex_s}_re`]
-        ;[...code_s.matchAll( regex_re )]
+            .regex_o
+            [`${switch_s}_a`]
+        const regex_re =
+          Array.isArray( regex_a )
+          ?
+            new RegExp( `${bound_s}(${regex_a.join( '|' )})(?!=)${bound_s}`, 'g' )    //: (?!=) to avoid tag attribute
+          :
+            lang_o
+              .regex_o
+              [`${switch_s}_re`]
+        ;console.log( regex_re )
+        code_s
+          .split( regex_re )
           .forEach
           (
-            match_a =>
+            split_s =>
             {
-              code_s =
-                code_s
-                  .replace
-                  (
-                    match_a[0],
-                    `<${I_o.TAG_s} class="i_${regex_s}">${match_a[0]}</${I_o.TAG_s}>`
-                  )
+              replace_s +=
+                regex_re
+                  .test( split_s )
+                ?
+                  `<${I_o.TAG_s} class="i_${switch_s}">${split_s}</${I_o.TAG_s}>`
+                :
+                  split_s
             }
           )
-      }
+        code_s =
+          replace_s
+          ||
+          code_s
+        }
     )
   return code_s
 }

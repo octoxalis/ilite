@@ -25,7 +25,7 @@ void function
        {regex: '(\#.*)', params: ['g'], replaceWith: '⁴$1⁴'},
        {regex: '¹([^¹]*)¹', params: ['g'], replaceWith: '<span class="reserved">$1</span>'},
        {regex: '²([^²]*)²', params: ['g'], replaceWith: '<span class="methods">$1</span>'},
-       {regex: '³([^³]*)³', params: ['g'], replaceWith: '<span class="variable">$1</span>'},
+       {regex: '³([^³]*)³', params: ['g'], replaceWith: '<span class="decble">$1</span>'},
        {regex: '⁴([^⁴]*)⁴', params: ['g'], replaceWith: '<span class="comment">$1</span>'},
        {regex: '(/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/)', params: ['g'], replaceWith: '<span class="comment">$1</span>'},
        {regex: '([+-]?([0-9]*[.])?[0-9]+)', params: ['g'], replaceWith: '<span class="number">$1</span>'},

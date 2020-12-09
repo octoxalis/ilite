@@ -78,8 +78,7 @@ JS_o
 JS_o
   .type_a =
 [
-  'boolean',
-  'byte',
+  //'byte',
   'char',
   'class',
   'double',
@@ -91,12 +90,13 @@ JS_o
   'long',
   //--'native',
   'null',
-  'short',
+  //'short',
   'static',
   'true',
   'typeof',
 
   "Array",
+  "Boolean",
   "Date",
   "Infinity",
   "NaN",
@@ -111,77 +111,11 @@ JS_o
 
 //=== VARIABLE ===//
 JS_o
-  .variable_a =
+  .declare_a =
 [
   'const',
   'let',
   'var',
-]
-
-
-
-
-//=== PUNCTUATION ===//
-JS_o
-  .punctuation_a =
-[
-  //XX `'`,
-  //XX `"`,
-  //XX '`',
-  '...',
-  ',',
-  ';',
-  '.',
-]
-
-
-
-
-//=== GROUP ===//
-JS_o
-  .group_a =
-[
-  '(',
-  ')',
-  '[',
-  ']',
-  '{',
-  '}',
-
-  //XX '//',  //: comments
-  //XX '/*',
-  //XX '*/',
-]
-
-
-
-
-//=== OPERATOR ===//
-JS_o
-  .operator_a =
-[
-  '+',
-  '++',
-  '-',
-  '--',
-  '*',
-  '/',
-  '<',
-  '<=',
-  '>',
-  '>=',
-  '%',
-  '=',
-  '&',
-  '&&',
-  '|',
-  '||',
-  '^',
-  '~',
-  '?',
-  ':',
-
-  '=>',
 ]
 
 
@@ -205,25 +139,83 @@ JS_o
 
 
 
+//=== PUNCTUATION ===//
+JS_o
+  .punctuation_a =
+[
+  '\\.\{3\}',
+  ':',
+  ',',
+  ';',
+  //'\\.',
+]
+
+
+
+
+//=== GROUP ===//
+JS_o
+  .group_a =
+[
+  '\\(',
+  '\\)',
+  '\\[',
+  '\\]',
+  '\\{',
+  '\\}',
+]
+
+
+
+
+//=== OPERATOR ===//
+JS_o
+  .operator_a =
+[
+  //?? '\\+{1,2}',
+  //?? '\\-{1,2}',
+  //?? '\\*',
+  //?? '/',
+  //?? '<',
+  //?? '<=',
+  //?? '>',
+  //?? '>=',
+  '%',
+  //?? '=',
+  //?? '&{1,2}',
+  //?? '\\|{1,2}',
+  //?? '\\^',
+  //?? '~',
+  //?? '\\?',
+
+  '=>',
+]
+
+
+
+
 JS_o
   .regex_o =
 {
-  line_re:  /((?:^|\s)\/\/(.+?)$)/gms,  //: //Comment
-  block_re: /(\/\*.*?\*\/)/gms,         //: /*Comment*/
-  grave_re: /(`[^`]*`)/gms,             //: `String`
-  apos_re:  /('[^']*')/gms,             //: 'String'
-  quot_re:  /("[^"]*")/gms,             //: "String"
-
-  num_re:   /^(?=.)([+-]?([0-9]*)(\.([0-9]+))?)$/gms,    //: Number
-  res_re:   new RegExp( JS_o.reserved_a.join( '|' ), 'gms' ),    //:
-  loop_re:  new RegExp( JS_o.loop_a.join( '|' ), 'gms' ),    //:
-  cont_re:  new RegExp( JS_o.control_a.join( '|' ), 'gms' ),    //:
-  type_re:  new RegExp( JS_o.type_a.join( '|' ), 'gms' ),    //:
-  var_re:   new RegExp( JS_o.variable_a.join( '|' ), 'gms' ),    //:
-  punc_re:  null,    //:
-  group_re: null,    //:
-  op_re:    null,    //:
-  prop_re:  new RegExp( JS_o.property_a.join( '|' ), 'gms' ),    //:
+  //=== first ===
+  line_re:  /((?:^|\s)\/\/(.+?)$)/g,   //: //Comment
+  block_re: /(\/\*.*?\*\/)/gms,        //: /*Comment*/
+  lit_re:   /(`[^`]*`)/g,              //: `String`
+  apos_re:  /('[^']*')/g,              //: 'String'
+  quot_re:  /("[^"]*")/gms,            //: "String"
+  //=== spin ===
+  res_a:   JS_o.reserved_a,    //:
+  loop_a:  JS_o.loop_a,        //:
+  cont_a:  JS_o.control_a,     //:
+  type_a:  JS_o.type_a,        //:
+  dec_a:   JS_o.declare_a,     //:
+  prop_a:  JS_o.property_a,    //:
+  group_a: JS_o.group_a,       //:
+  punct_a: JS_o.punctuation_a, //:
+  op_a:    JS_o.operator_a,    //:
+  uv_re:    /\b([a-zA-Z0-9_]+_[a-zA-Z]{1})\b/g,   //: user variable
+  //=== last ===
+  num_re:   /\b([-+]?[0-9]*\.?[0-9]+)\b/g,            //: Number
 }
 
 
@@ -233,7 +225,7 @@ JS_o
 [
   'line',
   'block',
-  'grave',
+  'lit',
   'apos',
   'quot',
 ]
@@ -241,24 +233,31 @@ JS_o
 
 
 JS_o
-  .spin_a =
+  .switchFirst_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
 [
-  'num',
-  'res',
-  'loop',
-  'cont',
-  'type',
-  'var',
-
-  'prop',
+  'res_b',    //: see I_o.BOUND_s
+  'loop_b',
+  'cont_b',
+  'type_b',
+  'dec_b',
+  'prop_b',
+  'group',
+  'punct',
+  'op',
+  'uv',
 ]
 
 
+JS_o
+  .switchLast_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
+[
+  'num',
+]
 
 JS_o
   .callback_a =
 [
-  'grave',
+  'lit',
 ]
 
 
@@ -284,23 +283,32 @@ JS_o
 
 
 JS_o
-  .grave__s =
+  .lit__s =
 (
   code_s
 ) =>
 {
-  let from_n = 0
-  let to_s = ''
-  const literal_re =
-    /\$\{([^\}]+)\}/gms
-  ;[...code_s.matchAll( literal_re )]
+  let lit_s = ''
+  code_s
+    .split
+    (
+      /(\$\{[^\}]+\})/gms
+    )
     .forEach
     (
-      match_a =>
+      split_s =>
       {
+        lit_s +=
+          split_s
+            .charAt( 0 )
+            === '$'
+            ?
+              `<${I_o.TAG_s} class="i_lit">${split_s}</${I_o.TAG_s}>`
+              :
+              split_s
       }
     )
-  return code_s
+  return lit_s
 }
 
 

@@ -5,7 +5,8 @@ IND_o.lang_o =
 {
   regex_o: JS_o.regex_o,
   aside_a: JS_o.aside_a,
-  spin_a:  JS_o.spin_a,
+  switchFirst_a: JS_o.switchFirst_a,
+  switchLast_a:  JS_o.switchLast_a,
   callback__s: JS_o.callback__s,
 }
 
@@ -15,11 +16,9 @@ IND_o.line__s =
   code_s
 ) =>
 {
-  const code_a =
-    code_s
-      .split( '\n' )
   let acode_s = ''
-  code_a
+  code_s
+    .split( '\n' )
     .forEach
     (
       line_s => acode_s += `<li>${line_s}`
@@ -31,16 +30,16 @@ IND_o.line__s =
 void function
 ()
 {
+  console.time( 'ilite' )
+
   const code_e =
     document
       .querySelector('#code')
   let code_s =
     I_o
       .raw__s( code_e.innerHTML )
+      //-- code_e.innerHTML
   //;console.log( code_s + '\n==================================' )
-
-
-
 
   const exit_o =
     I_o
@@ -51,15 +50,15 @@ void function
         {},      //: aside_o
         IND_o.lang_o
       )
-  ;console.log( exit_o[0] )
-  ;console.table( exit_o[1]  )
+  //;console.log( exit_o[0] )
 
   code_s =
     I_o
-      .spin__s
+      .switch__s
       (
         exit_o[0],
-        IND_o.lang_o
+        IND_o.lang_o,
+        'First'
       )
 
   const enter_o =
@@ -71,9 +70,26 @@ void function
         exit_o[1],
         IND_o.lang_o
       )
-  ;console.log( enter_o[0] )
-  ;console.table( enter_o[1] )
+  //;console.log( enter_o[0] )
+
+  code_s =
+    I_o
+      .switch__s
+      (
+        enter_o[0],
+        IND_o.lang_o,
+        'Last'
+      )
+
+  console.timeEnd( 'ilite' )
+
   code_e.innerHTML =
-  IND_o
-    .line__s( enter_o[0] )
+    `<pre>
+    ${IND_o
+      .line__s
+      (
+        code_s
+      )}</pre>`
+
+  //;console.log( code_s )
 }()

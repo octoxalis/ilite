@@ -4,18 +4,16 @@
 
 
 html, body {
-  font-family: Arial;
+  font-family: 'Fira Code Light';
 }
 
 /* === LAYOUT === */
 code
 {
-  font-family: Consolas,"courier new";
-  color: hsla(0 0% 0%/1);
-  background: hsla(0 0% 100%/1);
-  padding: 10px;
-  font-size: 100%;
   display: block;
+  padding: 10px;
+  color: hsla(var(--c_hue_h) var(--c_sat_lo_4) var(--c_lum_hi_4)/1);
+  background: hsla(var(--c_hue_h) var(--c_sat_lo_4) var(--c_lum_lo_3)/1);
   white-space: pre;
   overflow: auto;
 }
@@ -61,8 +59,41 @@ __                     {background:var(--c_ilite_ne); opacity:.5}
 .i_quot,
 __                     {background:var(--c_ilite_5)}
 
-.i_grave,
+.i_lit,
 __                     {background:var(--c_ilite_55)}
 
-.i_literal,
+.i_lit,
 __                     {background:var(--c_ilite_15)}
+
+.i_res,
+__                     {background:var(--c_ilite_8)}
+
+.i_loop,
+__                     {background:var(--c_ilite_3)}
+
+.i_cont,
+__                     {background:var(--c_ilite_4)}
+
+.i_type,
+__                     {background:var(--c_ilite_5)}
+
+.i_dec,
+__                     {background:var(--c_ilite_6)}
+
+.i_prop,
+__                     {background:var(--c_ilite_7)}
+
+.i_prop,
+__                     {background:var(--c_ilite_7)}
+
+.i_punct,
+__                     {background:var(--c_ilite_2)}
+
+.i_op,
+__                     {background:var(--c_ilite_25)}
+
+.i_num,
+__                     {background:var(--c_ilite_9)}
+
+.i_uv,
+__                     {color:var(--c_ilite_10)}
