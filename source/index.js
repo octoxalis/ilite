@@ -3,11 +3,11 @@ const IND_o = new Object( null )
 
 IND_o.lang_o =
 {
-  regex_o: JS_o.regex_o,
-  aside_a: JS_o.aside_a,
-  switchFirst_a: JS_o.switchFirst_a,
-  switchLast_a:  JS_o.switchLast_a,
-  callback__s: JS_o.callback__s,
+  regex_o:       JS_o.regex_o,
+  aside_a:       JS_o.aside_a,
+  switchAnte_a: JS_o.switchAnte_a,
+  switchPost_a:  JS_o.switchPost_a,
+  callback_f:    JS_o.callback_f,
 }
 
 
@@ -27,30 +27,28 @@ IND_o.line__s =
 }
 
 
-void function
-()
+IND_o.ilite__v =
+(
+  code_s
+) =>
 {
   console.time( 'ilite' )
 
-  const code_e =
-    document
-      .querySelector('#code')
-  let code_s =
-    I_o
-      .raw__s( code_e.innerHTML )
-      //-- code_e.innerHTML
-  //;console.log( code_s + '\n==================================' )
-
+  code_s =
+    code_s
+      .trim()
+  
   const exit_o =
     I_o
       .aside__s
       (
-        'exit',
         code_s,
         {},      //: aside_o
-        IND_o.lang_o
+        IND_o.lang_o,
+        'Exit',
       )
   //;console.log( exit_o[0] )
+
 
   code_s =
     I_o
@@ -58,19 +56,21 @@ void function
       (
         exit_o[0],
         IND_o.lang_o,
-        'First'
+        'Ante'
       )
+  //;console.log( code_s )
 
   const enter_o =
     I_o
       .aside__s
       (
-        'enter',
         code_s,
         exit_o[1],
-        IND_o.lang_o
+        IND_o.lang_o,
+        'Enter',
       )
   //;console.log( enter_o[0] )
+
 
   code_s =
     I_o
@@ -78,11 +78,14 @@ void function
       (
         enter_o[0],
         IND_o.lang_o,
-        'Last'
+        'Post'
       )
-
   console.timeEnd( 'ilite' )
 
+
+  const code_e =
+    document
+      .querySelector('#code')
   code_e.innerHTML =
     `<pre>
     ${IND_o
@@ -90,6 +93,57 @@ void function
       (
         code_s
       )}</pre>`
-
   //;console.log( code_s )
+}
+
+
+
+void function
+()
+{
+  const input_e =
+    document
+      .querySelector('#file_select')
+  input_e
+    .addEventListener
+    (
+      'change',
+      () =>
+      {
+        //XX if ( input_e.files.length === 0)
+        //XX {
+        //XX   return void alert('Error : No file selected');
+        //XX }
+        const file_a =
+          input_e.files
+        if ( !file_a.length  )
+          {
+            return void console.log( 'No file selected' )
+          }
+          //>
+        let file_o =
+            file_a[0]
+        let reader_o =
+          new FileReader()
+        reader_o
+          .addEventListener
+          (
+            'load',
+            ( event_o ) =>
+            {
+              IND_o
+                .ilite__v
+                (
+                  event_o
+                    .target
+                    .result
+                )
+            }
+          )
+        reader_o
+          .readAsText( file_o )
+      }
+    )
 }()
+
+

@@ -1,39 +1,65 @@
-//=== I.js === iliter main module
+//=== ilite.js === iliter main module
 
 const I_o =
 {
-  TAG_s  :  'i',
-  MARK_s :  '₀',
-  BOUND_s : '_b',
+  TAG_s  :  'i',    //: `<i class="i_dec">const</i>`
+  MARK_s :  '',    //: index number delimiter
+  BOUND_s : '_b',   //: bound regex_s suffix
 
 
-escape__s:  //: escape entities inside String
+escape__s:  //: escape ilite tag chars [< = " /]
 (
   code_s
 ) =>
   code_s
-    .replace( /&/g, '&amp;' )    //!!! order matters
-    .replace( /</g, '&lt;' )
-    .replace( />/g, '&gt;' )
+    .replaceAll( '&', '&amp;' )    //!!! order matters
+    .replaceAll( '<', '&lt;' )
+    .replaceAll( '>', '&gt;' )
 ,
 
 
 
-raw__s:
+number__s:  //: [0-9] --> [₀-₉]
 (
   code_s
 ) =>
-{
-  return code_s
-    .replace( /&amp;/g, '&' )
-    .replace( /&lt;/g, '<' )
-    .replace( /&gt;/g, '>' )
-}
+  code_s
+    .toString()
+    .replaceAll( '0', '₀' )
+    .replaceAll( '1', '₁' )
+    .replaceAll( '2', '₂' )
+    .replaceAll( '3', '₃' )
+    .replaceAll( '4', '₄' )
+    .replaceAll( '5', '₅' )
+    .replaceAll( '6', '₆' )
+    .replaceAll( '7', '₇' )
+    .replaceAll( '8', '₈' )
+    .replaceAll( '9', '₉' )
 ,
-  
 
 
-exit__s:
+
+unnumber__s:  //: [₀-₉] --> [0-9]
+(
+  code_s
+) =>
+  code_s
+    .replaceAll( '₀', '0' )
+    .replaceAll( '₁', '1' )
+    .replaceAll( '₂', '2' )
+    .replaceAll( '₃', '3' )
+    .replaceAll( '₄', '4' )
+    .replaceAll( '₅', '5' )
+    .replaceAll( '₆', '6' )
+    .replaceAll( '₇', '7' )
+    .replaceAll( '₈', '8' )
+    .replaceAll( '₉', '9' )
+,
+
+
+
+
+asideExit__s:
 (
   code_s,
   switch_s,
@@ -47,15 +73,19 @@ exit__s:
     lang_o
       .regex_o[`${switch_s}_re`]
   let index_n = -1
-  ;[...code_s.matchAll( regex_re )]
+  ;[
+    ...code_s.matchAll( regex_re )
+  ]
     .forEach
     (
       match_a =>
       {
         const exit_s =
           match_a[0]
+        const index_s =
+          I_o.number__s( ++index_n )
         const enter_s =
-          `${mark_s}${++index_n}${mark_s}`
+          `${mark_s}${index_s}${mark_s}`
         code_s =
           code_s
             .replace
@@ -73,7 +103,7 @@ exit__s:
 
 
 
-enter__s:
+asideEnter__s:
 (
   code_s,
   switch_s,
@@ -84,24 +114,25 @@ enter__s:
   let mark_s =
     `${I_o.MARK_s}${switch_s}${I_o.MARK_s}`
   let regex_re =
-    new RegExp( `${mark_s}([0-9]+)${mark_s}`, 'gms' )
-  ;[...code_s.matchAll( regex_re )]
+    new RegExp( `${mark_s}([₀-₉]+)${mark_s}`, 'gms' )
+  ;[
+    ...code_s.matchAll( regex_re )
+  ]
     .forEach
     (
       match_a =>
       {
         const exit_s =
           match_a[0]
-        const escape_s =
-          I_o
-            .escape__s( aside_a[+match_a[1]] )
+        const index_s =
+          I_o.unnumber__s( match_a[1] )
         let enter_s =
-        `<${I_o.TAG_s} class="i_${switch_s}">${escape_s}</${I_o.TAG_s}>`    //: Number cast
-        if ( lang_o.callback__s )
+          `<${I_o.TAG_s} class="i_${switch_s}">${aside_a[+index_s]}</${I_o.TAG_s}>`    //: Number cast
+        if ( lang_o.callback_f )
         {
           enter_s =
             lang_o
-              .callback__s
+              .callback_f
               (
                 enter_s,
                 switch_s
@@ -124,10 +155,10 @@ enter__s:
 
 aside__s:  //: (exit|enter) (strings|comments)
 (
-  way_s,     //: 'exit' | 'enter'
   code_s,
   aside_o,   //: empty when 'exit'
   lang_o,    //:
+  way_s,     //: 'exit' | 'enter'
 ) =>
 {
   lang_o
@@ -142,7 +173,7 @@ aside__s:  //: (exit|enter) (strings|comments)
         }
         let return_a =
           I_o
-            [`${way_s}__s`]
+            [`aside${way_s}__s`]
             (
               code_s,
               switch_s,
@@ -171,12 +202,17 @@ regex__re:
     lang_o
       .regex_o
       [`${switch_s}_a`]
-  if ( Array.isArray( regex_ ) )
+  if
+  (
+    Array
+      .isArray( regex_ )
+  )
   {
     return (
       new RegExp( `\\b(${regex_.join( '|' )})(?!=)\\b`, 'g' )
     )
   }
+  //>
   return (
     lang_o
       .regex_o
@@ -201,7 +237,9 @@ switch__s:
       switch_s =>
       {
         let bound_s = ''
-        const at_n = switch_s.indexOf( I_o.BOUND_s )
+        const at_n =
+          switch_s
+            .indexOf( I_o.BOUND_s )
         if ( at_n > -1 )
         {
           bound_s = '\\b'
@@ -220,13 +258,12 @@ switch__s:
             [`${switch_s}_a`]
         const regex_re =
           Array.isArray( regex_a )
-          ?
-            new RegExp( `${bound_s}(${regex_a.join( '|' )})(?!=)${bound_s}`, 'g' )    //: (?!=) to avoid tag attribute
-          :
-            lang_o
-              .regex_o
-              [`${switch_s}_re`]
-        ;console.log( regex_re )
+            ?
+              new RegExp( `${bound_s}(${regex_a.join( '|' )})(?!=)${bound_s}`, 'g' )    //: (?!=) to avoid tag attribute
+            :
+              lang_o
+                .regex_o
+                [`${switch_s}_re`]    ;console.log( regex_re )
         code_s
           .split( regex_re )
           .forEach

@@ -1,6 +1,79 @@
 const JS_o =
   new Object( null )
 
+//=== OPERATOR ===//
+JS_o
+  .operator_a =
+[
+  '\\+{2}',
+  '\\-{2}',
+  //-- '\\*',
+  //-- '/',
+  //-- '<',
+  //-- '<=',
+  //-- '>',
+  //-- '>=',
+  //-- '=',
+  '&{2}',
+  '\\|{2}',
+  //-- '\\^',
+  '={2,3}',
+  '!={1,2}',
+  '~',
+  
+  '!',
+  '%',
+  '=>',
+
+  '\\[',      //: GROUP
+  '\\]',
+  '\\{',
+  '\\}',
+
+  ';',        //: PUNCTUATION
+  ',',
+  '\\.\{3\}',
+  '\\?',
+  ':',
+
+]
+
+
+
+
+//=== PUNCTUATION ===//
+/*
+JS_o
+  .punctuation_a =
+[
+  ';',
+  ',',
+  '\\.\{3\}',
+  '\\?',
+  ':',
+  //'\\.',
+]
+*/
+
+
+
+
+//=== GROUP ===//
+/*
+JS_o
+  .group_a =
+[
+  '\\(',
+  '\\)',
+  '\\[',
+  '\\]',
+  '\\{',
+  '\\}',
+]
+*/
+
+
+
 //=== RESERVED ===//
 JS_o
   .reserved_a =
@@ -42,6 +115,7 @@ JS_o
   'continue',
   'do',
   'for',
+  'forEach',
   'in',
   'of',
   'while',
@@ -139,70 +213,15 @@ JS_o
 
 
 
-//=== PUNCTUATION ===//
-JS_o
-  .punctuation_a =
-[
-  '\\.\{3\}',
-  ':',
-  ',',
-  ';',
-  //'\\.',
-]
-
-
-
-
-//=== GROUP ===//
-JS_o
-  .group_a =
-[
-  '\\(',
-  '\\)',
-  '\\[',
-  '\\]',
-  '\\{',
-  '\\}',
-]
-
-
-
-
-//=== OPERATOR ===//
-JS_o
-  .operator_a =
-[
-  //?? '\\+{1,2}',
-  //?? '\\-{1,2}',
-  //?? '\\*',
-  //?? '/',
-  //?? '<',
-  //?? '<=',
-  //?? '>',
-  //?? '>=',
-  '%',
-  //?? '=',
-  //?? '&{1,2}',
-  //?? '\\|{1,2}',
-  //?? '\\^',
-  //?? '~',
-  //?? '\\?',
-
-  '=>',
-]
-
-
-
-
 JS_o
   .regex_o =
 {
   //=== first ===
-  line_re:  /((?:^|\s)\/\/(.+?)$)/g,   //: //Comment
-  block_re: /(\/\*.*?\*\/)/gms,        //: /*Comment*/
-  lit_re:   /(`[^`]*`)/g,              //: `String`
-  apos_re:  /('[^']*')/g,              //: 'String'
-  quot_re:  /("[^"]*")/gms,            //: "String"
+  line_re:  /((?:^|\s)\/\/(.+?)$)/gms,   //: //Comment
+  block_re: /(\/\*.*?\*\/)/gms,          //: /*Comment*/
+  lit_re:   /(`[^`]*`)/g,                //: `String`
+  apos_re:  /('[^']*')/g,                //: 'String'
+  quot_re:  /("[^"]*")/gms,              //: "String"
   //=== spin ===
   res_a:   JS_o.reserved_a,    //:
   loop_a:  JS_o.loop_a,        //:
@@ -213,6 +232,7 @@ JS_o
   group_a: JS_o.group_a,       //:
   punct_a: JS_o.punctuation_a, //:
   op_a:    JS_o.operator_a,    //:
+
   uv_re:    /\b([a-zA-Z0-9_]+_[a-zA-Z]{1})\b/g,   //: user variable
   //=== last ===
   num_re:   /\b([-+]?[0-9]*\.?[0-9]+)\b/g,            //: Number
@@ -233,25 +253,27 @@ JS_o
 
 
 JS_o
-  .switchFirst_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
+  .switchAnte_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
 [
+  'op',
+  //-- 'punct' --> op,
+  //-- 'group' --> op,
+
   'res_b',    //: see I_o.BOUND_s
   'loop_b',
   'cont_b',
   'type_b',
   'dec_b',
   'prop_b',
-  'group',
-  'punct',
-  'op',
   'uv',
+
+  'num',
 ]
 
 
 JS_o
-  .switchLast_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
+  .switchPost_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
 [
-  'num',
 ]
 
 JS_o
@@ -264,7 +286,7 @@ JS_o
 
 
 JS_o
-  .callback__s =
+  .callback_f =
 (
   code_s,
   regex_s
@@ -300,12 +322,11 @@ JS_o
       {
         lit_s +=
           split_s
-            .charAt( 0 )
-            === '$'
-            ?
-              `<${I_o.TAG_s} class="i_lit">${split_s}</${I_o.TAG_s}>`
+            .charAt( 0 ) === '$'
+              ?
+                `<${I_o.TAG_s} class="i_lit">${split_s}</${I_o.TAG_s}>`
               :
-              split_s
+                split_s
       }
     )
   return lit_s

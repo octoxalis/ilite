@@ -4,16 +4,17 @@
 
 
 html, body {
-  font-family: 'Fira Code Light';
+  font-family: 'Fira Code Medium';
 }
 
 /* === LAYOUT === */
 code
 {
   display: block;
-  padding: 10px;
-  color: hsla(var(--c_hue_h) var(--c_sat_lo_4) var(--c_lum_hi_4)/1);
-  background: hsla(var(--c_hue_h) var(--c_sat_lo_4) var(--c_lum_lo_3)/1);
+  margin: 0;
+  padding: 0;
+  color: hsla(var(--c_hue_h) var(--c_sat_hi_2) var(--c_lum_hi_4)/1);
+  background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_4)/1);
   white-space: pre;
   overflow: auto;
 }
@@ -22,78 +23,85 @@ code > ol
 {
   display: flex;
   flex-direction: column;
-  min-height: 1em;
+  /*min-height: 1em;*/
 }
 
 code li::marker
 {
   display: inline-block;
-  width: 10ch;
-  /*?? text-align: right;*/
+  width: 6ch;
   -webkit-select: none;
-  color: hsla(var(--c_hue_h) 50% 0%/.25);
+  color: var(--c_ilite_ne);
+  opacity: .7;
 }
+
+/* ???
+code li:hover
+{
+  filter: brightness(5) saturate(100%) invert(1);
+}
+*/
 
 code li.hi
 {
-  background-color: hsla( 210 28% 6%/1);
+  background: hsla( 210 28% 94%/1);
 }
 
 code li.hi::marker
 {
   color: red;
-  background-color: white;
+  background: white;
 }
 
-
-/*=== HIGHLIGHT ===*/
 
 [class^="i_"],
 __                     {font-style:normal}
 
+
+
+/* === BACKGROUND === */
+
 .i_block,
 .i_line,
-__                     {background:var(--c_ilite_ne); opacity:.5}
+__                     {background:var(--c_ilite_ne); opacity:.33}
 
 .i_apos,
 .i_quot,
-__                     {background:var(--c_ilite_5)}
-
+__                     {background:var(--c_ilite_1)}
 .i_lit,
-__                     {background:var(--c_ilite_55)}
-
-.i_lit,
-__                     {background:var(--c_ilite_15)}
-
-.i_res,
-__                     {background:var(--c_ilite_8)}
-
-.i_loop,
-__                     {background:var(--c_ilite_3)}
-
-.i_cont,
-__                     {background:var(--c_ilite_4)}
-
-.i_type,
-__                     {background:var(--c_ilite_5)}
-
-.i_dec,
-__                     {background:var(--c_ilite_6)}
-
-.i_prop,
-__                     {background:var(--c_ilite_7)}
-
-.i_prop,
-__                     {background:var(--c_ilite_7)}
-
-.i_punct,
 __                     {background:var(--c_ilite_2)}
 
-.i_op,
-__                     {background:var(--c_ilite_25)}
-
 .i_num,
-__                     {background:var(--c_ilite_9)}
+__                     {background:var(--c_ilite_3)}
+
+
+
+
+/* === FRONT === */
 
 .i_uv,
+__                     {color:var(--c_ilite_6)}
+
+
+.i_op,
+__                     {color:var(--c_ilite_8)}
+.i_punct,
+__                     {color:var(--c_ilite_11)}
+
+
+.i_dec,
+__                     {color:var(--c_ilite_12)}
+.i_loop
+__                     {color:var(--c_ilite_9)}
+.i_cont,
 __                     {color:var(--c_ilite_10)}
+
+
+.i_type,
+__                     {color:var(--c_ilite_7)}
+.i_prop,
+__                     {color:var(--c_ilite_12)}
+.i_res,
+__                     {color:var(--c_ilite_13)}
+
+
