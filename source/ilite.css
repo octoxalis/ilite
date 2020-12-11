@@ -1,16 +1,18 @@
 /*
 code,
 code *,
-__                     {font-family:var(--font_mono)}
+__                     {font-family:var(--FONT_MONO)}
 */
 
 
 /* === LAYOUT === */
 code
-{
+{  
   display: block;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  min-height: 100vh;
   color: hsla(var(--c_hue_h) var(--c_sat_hi_2) var(--c_lum_hi_4)/1);
   background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_3)/.9);
   white-space: pre;
@@ -21,7 +23,6 @@ code > ol
 {
   display: flex;
   flex-direction: column;
-  /*min-height: 1em;*/
 }
 
 code li::marker

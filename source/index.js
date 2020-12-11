@@ -143,6 +143,26 @@ void function
       }
     )
 
+  const font_e =
+    document
+      .querySelector('#font_select')
+      font_e
+    .addEventListener
+    (
+      'input',
+      () =>
+      {
+        document
+          .documentElement
+          .style
+          .setProperty
+          (
+            '--size_ratio',
+            font_e.value
+          )
+      }
+    )
+
   const color_e =
     document
       .querySelector('#color_select')
