@@ -1,66 +1,27 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ILITER</title>
-
   <link rel="stylesheet" href="color.css"/>
   <link rel="stylesheet" href="font.css"/>
+  <link rel="stylesheet" href="index.css"/>
   <link rel="stylesheet" href="ilite.css"/>
-  <style type="text/css">
-* { box-sizing: border-box; }
-
-body
-{
-  margin: 0;
-  padding: 0;
-}
-
-#input
-{
-  display: flex;
-  place-items:center;
-  padding: 0 1rem;
-  width: 100%;
-  height: 3vh;
-  background: hsla(var(--c_hue_h) var(--c_sat_ne) var(--c_lum_hi_2)/1);
-}
-
-#file_select
-{
-  flex-basis: 60%;
-}
-#color_select
-{
-  flex-basis: 10%;
-}
-
-code
-{
-  width: 100vw;
-  height: 100vh;
-}
-  </style>
 </head>
 
 <body class="body">
-
   <div id="input">
     <input id="file_select" type="file"/>
     <label for="color_select">change primary color</label>
     <input id="color_select" type="number" pattern="[1-9][0-9]{0,2}"/>
   </div>
-
   <code id="code">
   </code>
-
   <script src="JS.js" defer></script>
   <script src="ilite.js" defer></script>
   <script src="index.js" defer></script>
   <script>
   </script>
 </body>
-
 </html>
