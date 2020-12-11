@@ -34,7 +34,7 @@ Searching for a lightweight highlighter to replace either Prism.js or Highlight.
 
 #### Tip
 
-Have a look at [iliter page] and inspect the console to see which **RegExp** are used and the amount of milliseconds to process the _ilited_ file (should be roughly 0.1 ms per line).
+Have a look at [iliter page] and inspect the console to see which **RegExp** are used and the amount of milliseconds to process the _ilited_ file: should be roughly around ten lines per millisecond (on my i7-6600 CPU computer).
 
 
 [iliter page]: https://iliter.netlify.app

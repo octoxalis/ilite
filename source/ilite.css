@@ -10,7 +10,7 @@ code
 {  
   display: block;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 1rem;
   width: 100vw;
   min-height: 100vh;
   color: hsla(var(--c_hue_h) var(--c_sat_hi_2) var(--c_lum_hi_4)/1);
@@ -28,7 +28,7 @@ code > ol
 code li::marker
 {
   display: inline-block;
-  width: 6ch;
+  width: 16ch;
   -webkit-select: none;
   color: var(--c_ilite_ne);
   opacity: .7;
