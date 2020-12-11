@@ -15,6 +15,7 @@ A lightning-fast and light-weight highlighter suitable for my own quirky coding 
 + smartly _ilites_ background and/or front, with semi-transparent colors
 + _ilites_ line on cursor hover
 + _ilites_ also specific lines on-demand for a programmatically specified file
++ _ilites_ also any clicked line (which can be toggled later) by underscoring it
 + covers only the specific properties of these languages/tools I use (but easy to augment)
 + generate ultra lightweight markup (e.g. `<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>`)
 + beta release, not production ready

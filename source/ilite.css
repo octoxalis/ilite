@@ -1,3 +1,8 @@
+:root
+{
+  --LINE_BORDER_n: 3px;
+}
+
 /*
 code,
 code *,
@@ -25,16 +30,10 @@ code > ol
   flex-direction: column;
 }
 
-code li::marker
+code li
 {
-  --size_ratio: 1;
-
-  display: inline-block;
-  -webkit-select: none;
-  color: var(--c_ilite_ne);
-  opacity: .7;
+  border-bottom: var(--LINE_BORDER_n) solid transparent;
 }
-
 
 code li:hover
 {
@@ -42,10 +41,18 @@ code li:hover
   background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_1)/.9);
 }
 
+code li::marker
+{
+  display: inline-block;
+  -webkit-select: none;
+  font-size: 80%;        /* for 4 digits number */
+  color: var(--c_ilite_ne);
+  opacity: .7;
+}
+
 
 code li.i_hi
 {
-  background: hsla( 210 28% 94%/1);
   background: hsla(calc( var(--c_hue_h) + var(--c_hi_off) ) var(--c_sat_hi_2) var(--c_lum_lo_2)/1);
 }
 
@@ -58,6 +65,16 @@ code li.i_hi::marker
 [class^="i_"],
 __                     {font-style:normal}
 
+
+.i_spot
+{
+  border-bottom: var(--LINE_BORDER_n) solid hsla(calc( var(--c_hue_h) + var(--c_hi_off) ) var(--c_sat_hi_2) var(--c_lum_hi_4)/1);
+}
+
+.i_spot:hover
+{
+  cursor: pointer;
+}
 
 
 /* === BACKGROUND === */

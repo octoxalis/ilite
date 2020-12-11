@@ -38,13 +38,13 @@ IND_o
         code_s,
         {},      //: aside_o
         IND_o.lang_o,
-        'Exit',
+        'exit',
       )                      //;console.log( exit_o[0] )
 
 
   code_s =
     I_o
-      .switch__s
+      .step__s
       (
         exit_o[0],
         IND_o.lang_o,
@@ -58,13 +58,13 @@ IND_o
         code_s,
         exit_o[1],
         IND_o.lang_o,
-        'Enter',
+        'enter',
       )                      //;console.log( enter_o[0] )
 
 
   code_s =
     I_o
-      .switch__s
+      .step__s
       (
         enter_o[0],
         IND_o.lang_o,
@@ -121,6 +121,8 @@ void function
                     .target
                     .result
                 )
+              I_o
+                .listener__v()
             }
           )
         reader_o
@@ -167,6 +169,9 @@ void function
           )
       }
     )
+
+  I_o
+    .listen__v( 'code' )
 }()
 
 
