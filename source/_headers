@@ -1,0 +1,11 @@
+/*
+Accept-Charset: utf-8
+# Comment out the following line if NOT using Service-Worker-Allowed rule
+Service-Worker-Allowed: /
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Feature-Policy: fullscreen 'self';midi 'self';sync-xhr 'self';microphone 'self';camera 'self';magnetometer 'self';gyroscope 'self';
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1;mode=block
+Timing-Allow-Origin: "https://iliter.netlify.app/"
+Content-Security-Policy: default-src https://iliter.netlify.app/ ; base-uri https://iliter.netlify.app/ ; font-src https://iliter.netlify.app/ ; connect-src https://iliter.netlify.app/ ; prefetch-src https://iliter.netlify.app/ ; img-src https://iliter.netlify.app/ ; frame-src https://iliter.netlify.app/ ; frame-ancestors https://iliter.netlify.app/ ; form-action https://iliter.netlify.app/ ; manifest-src https://iliter.netlify.app/ ; script-src-elem https://iliter.netlify.app/ ; script-src https://iliter.netlify.app/ ; object-src https://iliter.netlify.app/ ; style-src https://iliter.netlify.app/ 'unsafe-inline' 'sha-256-Uu5gMskcILLesqzaszRedr8M99sFeqjl+HTGJXhJWFQ=' 'sha-256-Uu5gMskcILLesqzaszRedr8M99sFeqjl+HTGJXhJWFQ=';
