@@ -1,17 +1,19 @@
 const IND_o = new Object( null )
 
 
-IND_o.lang_o =
+IND_o
+  .lang_o =
 {
-  regex_o:       JS_o.regex_o,
-  aside_a:       JS_o.aside_a,
+  regex_o:      JS_o.regex_o,
+  aside_a:      JS_o.aside_a,
   switchAnte_a: JS_o.switchAnte_a,
-  switchPost_a:  JS_o.switchPost_a,
-  callback_f:    JS_o.callback_f,
+  switchPost_a: JS_o.switchPost_a,
+  callback_f:   JS_o.callback_f,
 }
 
 
-IND_o.line__s =
+IND_o
+  .line__s =
 (
   code_s
 ) =>
@@ -27,7 +29,8 @@ IND_o.line__s =
 }
 
 
-IND_o.ilite__v =
+IND_o
+  .ilite__v =
 (
   code_s
 ) =>
@@ -87,12 +90,11 @@ IND_o.ilite__v =
     document
       .querySelector('#code')
   code_e.innerHTML =
-    `<pre>
-    ${IND_o
+    `${IND_o
       .line__s
       (
         code_s
-      )}</pre>`
+      )}`
   //;console.log( code_s )
 }
 
@@ -101,21 +103,17 @@ IND_o.ilite__v =
 void function
 ()
 {
-  const input_e =
+  const file_e =
     document
       .querySelector('#file_select')
-  input_e
+  file_e
     .addEventListener
     (
       'change',
       () =>
       {
-        //XX if ( input_e.files.length === 0)
-        //XX {
-        //XX   return void alert('Error : No file selected');
-        //XX }
         const file_a =
-          input_e.files
+          file_e.files
         if ( !file_a.length  )
           {
             return void console.log( 'No file selected' )
@@ -142,6 +140,26 @@ void function
           )
         reader_o
           .readAsText( file_o )
+      }
+    )
+
+  const color_e =
+    document
+      .querySelector('#color_select')
+  color_e
+    .addEventListener
+    (
+      'input',
+      () =>
+      {
+        document
+          .documentElement
+          .style
+          .setProperty
+          (
+            '--c_hue_h',
+            color_e.value
+          )
       }
     )
 }()

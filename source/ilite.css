@@ -1,11 +1,9 @@
-:root
-{
-}
+/*
+code,
+code *,
+__                     {font-family:var(--font_mono)}
+*/
 
-
-html, body {
-  font-family: 'Fira Code Medium';
-}
 
 /* === LAYOUT === */
 code
@@ -14,7 +12,7 @@ code
   margin: 0;
   padding: 0;
   color: hsla(var(--c_hue_h) var(--c_sat_hi_2) var(--c_lum_hi_4)/1);
-  background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_4)/1);
+  background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_3)/.9);
   white-space: pre;
   overflow: auto;
 }
@@ -35,12 +33,13 @@ code li::marker
   opacity: .7;
 }
 
-/* ???
+
 code li:hover
 {
-  filter: brightness(5) saturate(100%) invert(1);
+  filter: contrast(2);
+  background: hsla(var(--c_hue_h) var(--c_sat_lo_2) var(--c_lum_lo_1)/.9);
 }
-*/
+
 
 code li.hi
 {
@@ -80,7 +79,7 @@ __                     {background:var(--c_ilite_3)}
 /* === FRONT === */
 
 .i_uv,
-__                     {color:var(--c_ilite_6)}
+__                     {color:var(--c_ilite_12)}
 
 
 .i_op,
@@ -90,7 +89,7 @@ __                     {color:var(--c_ilite_11)}
 
 
 .i_dec,
-__                     {color:var(--c_ilite_12)}
+__                     {color:var(--c_ilite_6)}
 .i_loop
 __                     {color:var(--c_ilite_9)}
 .i_cont,

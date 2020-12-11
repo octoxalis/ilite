@@ -3,7 +3,7 @@
 const I_o =
 {
   TAG_s  :  'i',    //: `<i class="i_dec">const</i>`
-  MARK_s :  '',    //: index number delimiter
+  MARK_s :  '₊',     //: index number delimiter
   BOUND_s : '_b',   //: bound regex_s suffix
 
 
@@ -126,8 +126,14 @@ asideEnter__s:
           match_a[0]
         const index_s =
           I_o.unnumber__s( match_a[1] )
+        const escape_s =
+          I_o
+            .escape__s
+            (
+              aside_a[+index_s]    //: Number cast
+            )
         let enter_s =
-          `<${I_o.TAG_s} class="i_${switch_s}">${aside_a[+index_s]}</${I_o.TAG_s}>`    //: Number cast
+          `<${I_o.TAG_s} class="i_${switch_s}">${escape_s}</${I_o.TAG_s}>`
         if ( lang_o.callback_f )
         {
           enter_s =

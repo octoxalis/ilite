@@ -1,6 +1,6 @@
 :root
 {
---c_hue_h: 200;
+--c_hue_h: 180;
 
 --c_sat_hi_4: 94%;
 --c_sat_hi_2: 72%;
@@ -25,7 +25,7 @@
 --c_ilite_3:  hsla( calc( var(--c_hue_h) + 180 ) var(--c_sat_hi_4) var(--c_lum_lo_1) /.15 );
 --c_ilite_4:  hsla( calc( var(--c_hue_h) + 270 ) var(--c_sat_hi_4) var(--c_lum_lo_1) /.15 );
 
---c_ilite_ne: hsla( var(--c_hue_h) var(--c_sat_ne) var(--c_lum_lo_4)   /.2 );
+--c_ilite_ne: hsla( var(--c_hue_h) var(--c_sat_ne) var(--c_lum_hi_4)   /.4 );
 
 
 
