@@ -4,28 +4,18 @@ const IND_o = new Object( null )
 IND_o
   .lang_o =
 {
-  regex_o:      JS_o.regex_o,
-  aside_a:      JS_o.aside_a,
-  switchAnte_a: JS_o.switchAnte_a,
-  switchPost_a: JS_o.switchPost_a,
-  callback_f:   JS_o.callback_f,
-}
-
-
-IND_o
-  .line__s =
-(
-  code_s
-) =>
-{
-  let acode_s = ''
-  code_s
-    .split( '\n' )
-    .forEach
-    (
-      line_s => acode_s += `<li>${line_s}`
-    )
-  return `<ol class="i_code">${acode_s}</ol>`
+  regex_o:    JS_o.regex_o,
+  aside_a:    JS_o.aside_a,
+  ante_a:     JS_o.ante_a,
+  post_a:     JS_o.post_a,
+  callback_f: JS_o.callback_f,
+  hiline_a:    //: 1-indexed (line index)
+    [
+      4, 5,
+      12,
+      28,
+      35, 36, 37, 38, 39, 40, 41, 42
+    ],
 }
 
 
@@ -49,8 +39,7 @@ IND_o
         {},      //: aside_o
         IND_o.lang_o,
         'Exit',
-      )
-  //;console.log( exit_o[0] )
+      )                      //;console.log( exit_o[0] )
 
 
   code_s =
@@ -59,9 +48,8 @@ IND_o
       (
         exit_o[0],
         IND_o.lang_o,
-        'Ante'
-      )
-  //;console.log( code_s )
+        'ante'
+      )                      //;console.log( code_s )
 
   const enter_o =
     I_o
@@ -71,8 +59,7 @@ IND_o
         exit_o[1],
         IND_o.lang_o,
         'Enter',
-      )
-  //;console.log( enter_o[0] )
+      )                      //;console.log( enter_o[0] )
 
 
   code_s =
@@ -81,21 +68,19 @@ IND_o
       (
         enter_o[0],
         IND_o.lang_o,
-        'Post'
+        'post'
       )
   console.timeEnd( 'ilite' )
 
 
-  const code_e =
-    document
-      .querySelector('#code')
-  code_e.innerHTML =
-    `${IND_o
-      .line__s
-      (
-        code_s
-      )}`
-  //;console.log( code_s )
+  document
+    .querySelector('#code')
+    .innerHTML =
+      `${I_o.line__s
+        (
+          code_s,
+          IND_o.lang_o
+        )}`                  //;console.log( code_s )
 }
 
 

@@ -237,7 +237,7 @@ switch__s:
 ) =>
 {
   lang_o
-    [`switch${order_s}_a`]
+    [`${order_s}_a`]
     .forEach
     (
       switch_s =>
@@ -294,5 +294,39 @@ switch__s:
   return code_s
 }
 ,
+
+
+
+line__s:
+(
+  code_s,
+  lang_o,
+) =>
+{
+  let acode_s = ''
+  code_s
+    .split( '\n' )
+    .forEach
+    (
+      (
+        line_s,
+        at_n
+      ) =>
+      {
+        const class_s =
+          lang_o
+            .hiline_a
+            .includes( at_n + 1 )    //: 1-indexed
+            ?
+              ' class="i_hi"'
+            :
+              ''
+        acode_s += `<li${class_s}>${line_s}`
+      }
+    )
+  return `<ol class="i_code">${acode_s}</ol>`
+}
+,
+
 
 }

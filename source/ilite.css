@@ -27,8 +27,9 @@ code > ol
 
 code li::marker
 {
+  --size_ratio: 1;
+
   display: inline-block;
-  width: 16ch;
   -webkit-select: none;
   color: var(--c_ilite_ne);
   opacity: .7;
@@ -42,15 +43,15 @@ code li:hover
 }
 
 
-code li.hi
+code li.i_hi
 {
   background: hsla( 210 28% 94%/1);
+  background: hsla(calc( var(--c_hue_h) + var(--c_hi_off) ) var(--c_sat_hi_2) var(--c_lum_lo_2)/1);
 }
 
-code li.hi::marker
+code li.i_hi::marker
 {
-  color: red;
-  background: white;
+  color: hsla(calc( var(--c_hue_h) + var(--c_hi_off) ) var(--c_sat_hi_2) var(--c_lum_hi_2)/1);
 }
 
 

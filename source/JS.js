@@ -253,7 +253,7 @@ JS_o
 
 
 JS_o
-  .switchAnte_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
+  .ante_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
 [
   'op',
   //-- 'punct' --> op,
@@ -272,7 +272,7 @@ JS_o
 
 
 JS_o
-  .switchPost_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
+  .post_a =    //!!! MUST avoid name conflict with reserved_a, declare_a, property_a, etc.
 [
 ]
 
@@ -281,7 +281,6 @@ JS_o
 [
   'lit',
 ]
-
 
 
 

@@ -12,8 +12,9 @@ A lightning-fast and light-weight highlighter suitable for my own quirky coding 
   * CSS stylesheets (...soon)
   * HTML (...soon)
   * Nunjucks templates (...soon)
-+ smartly _ilites_ background and/or front, with semi-transparent colors and line cursor
-+ _ilites_ also specific lines on-demand
++ smartly _ilites_ background and/or front, with semi-transparent colors
++ _ilites_ line on cursor hover
++ _ilites_ also specific lines on-demand for a programmatically specified file
 + covers only the specific properties of these languages/tools I use (but easy to augment)
 + generate ultra lightweight markup (e.g. `<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>`)
 + beta release, not production ready

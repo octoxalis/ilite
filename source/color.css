@@ -18,6 +18,8 @@
 --c_lum_lo_3: 17%;
 --c_lum_lo_4: 6%;
 
+--c_hi_off: 180;
+
 
 /* === BACKGROUND === */
 --c_ilite_1:  hsla( calc( var(--c_hue_h) + 0 )   var(--c_sat_hi_4) var(--c_lum_lo_1) /.15 );
