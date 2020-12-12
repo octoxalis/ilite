@@ -6,6 +6,9 @@ const gt_s = '>'
 const LT_s = '&lt;'
 const lt_s = '<'
 
+let inc_n = 1
+//-- ++inc_n
+//-- inc_n++
 let comp_b = 1 < 2
 comp_b = 2 > 1
 comp_b = 2 >= 1
@@ -25,5 +28,9 @@ let quot_re = /("[^\u0022]*")/g         //: "String"
 let along_s =
 `Template literals are string literals allowing embedded expressions.
 You can use multi-line strings
-and string interpolation features (e.g. ${comp_b}) with them.`
+and string interpolation features (e.g. ${temp_s}) with them.`
 
+console.log( 'OK' )
+console.time( 'ilite' )
+console
+  .timeEnd ( 'ilite' )

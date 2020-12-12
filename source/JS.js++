@@ -1,18 +1,50 @@
 const JS_o =
   new Object( null )
 
+JS_o
+  .strip__s =
+    template_s =>
+      template_s
+        .replaceAll
+        (
+          /\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/gm,
+          ''
+        )
+
+
+JS_o
+  .regexp__s =
+    template_s =>
+      JS_o
+        .strip__s( template_s )
+        .replaceAll
+          (
+            /(\r\n|r\|\n|\s)/gm,
+            ''
+          )
+
+
+
 //=== OPERATOR ===//
 JS_o
   .operator_a =
 [
-  '\\+{1,2}',
+  //...'\\+{1,2}',
+  JS_o
+    .regexp__s
+    (
+`      // '+' or '++'
+\\+    // plus
+{1,2}  // once or twice (i.e. increment op)
+`
+    ),
   '\\-{1,2}',
   '\\*=?',
   '\\/=?',
   '<=?',
   '>=?',
-  '&{1,2}',
-  '\\|{1,2}',
+  '&{2}',
+  '\\|{2}',
   //-- '\\^',
   '={1,3}',
   '!={0,2}',
@@ -194,13 +226,9 @@ JS_o
   group_a: JS_o.group_a,       //:
   punct_a: JS_o.punctuation_a, //:
   op_a:    JS_o.operator_a,    //:
-
-  num_re: /\b([-+]?[0-9]*\.?[0-9]+)\b/g,            //: Number
-  
-  //: user defined
-  uv_re:  /\b([a-zA-Z0-9_]+_{1,2}[abcefnorsUvY]e?)\b/g,   //: user variable (e.g. 'name_s')
-  log_re: /(console\s*\.[^(]+)/gms,                       //: console
+  uv_re:    /\b([a-zA-Z0-9_]+_[a-zA-Z]{1,2})\b/g,   //: user variable e.g. `string_s`, `regex_re`
   //=== last ===
+  num_re:   /\b([-+]?[0-9]*\.?[0-9]+)\b/g,          //: Number
 }
 
 
@@ -229,7 +257,6 @@ JS_o
   'dec_b',
   'prop_b',
   'uv',
-  'log',
 
   'num',
 ]
@@ -287,7 +314,7 @@ JS_o
           split_s
             .charAt( 0 ) === '\u0024'
               ?
-                `<${I_o.TAG_s} class="i_temp">${split_s}</${I_o.TAG_s}>`
+                `<${I_o.TAG_s} class="i_lit">${split_s}</${I_o.TAG_s}>`
               :
                 split_s
       }
