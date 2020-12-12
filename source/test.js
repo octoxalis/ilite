@@ -16,3 +16,14 @@ let noteq_b = 3!==4    //: no space
 let op_n = (1 + 2 - 3) * (5 / 4)
 op_n = (1+2-3)*(5/4)
 op_n += 10 % 2
+
+let lit_re  = /(`[^\u0060]*`)/gms       //: `template String`
+let apos_re = /('[^\u0027]*')/g         //: 'String'
+let quot_re = /("[^\u0022]*")/g         //: "String"
+
+//!!! check
+let along_s =
+`Template literals are string literals allowing embedded expressions.
+You can use multi-line strings
+and string interpolation features (e.g. ${comp_b}) with them.`
+

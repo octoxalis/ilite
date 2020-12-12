@@ -181,10 +181,10 @@ JS_o
   //=== first ===
   line_re:  /((?:^|\s)\/\/(.+?)$)/gms,   //: //Comment
   block_re: /(\/\*.*?\*\/)/gms,          //: /*Comment*/
-  lit_re:   /(`[^`]*`)/g,                //: `String`
-  apos_re:  /('[^']*')/g,                //: 'String'
-  quot_re:  /("[^"]*")/gms,              //: "String"
-  //=== spin ===
+  lit_re:   /(`[^\u0060]*`)/gms,           //: `template String`
+  apos_re:  /('[^\u0027]*')/g,           //: 'String'
+  quot_re:  /("[^\u0022]*")/g,         //: "String"
+  //=== step ===
   res_a:   JS_o.reserved_a,    //:
   loop_a:  JS_o.loop_a,        //:
   cont_a:  JS_o.control_a,     //:
@@ -281,7 +281,7 @@ JS_o
       {
         lit_s +=
           split_s
-            .charAt( 0 ) === '$'
+            .charAt( 0 ) === '\u0024'
               ?
                 `<${I_o.TAG_s} class="i_lit">${split_s}</${I_o.TAG_s}>`
               :

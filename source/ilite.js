@@ -67,7 +67,8 @@ const I_o =
       step_s,
       aside_a,
       lang_o
-    ) => {
+    ) =>
+    {
       let mark_s =
         `${I_o.MARK_s}${step_s}${I_o.MARK_s}`
       let regex_re =
@@ -79,7 +80,8 @@ const I_o =
         ]
           .forEach
           (
-            match_a => {
+            match_a =>
+            {
               const exit_s =
                 match_a[0]
               const index_s =
@@ -109,7 +111,8 @@ const I_o =
       step_s,
       aside_a,
       lang_o,
-    ) => {
+    ) =>
+    {
       let mark_s =
         `${I_o.MARK_s}${step_s}${I_o.MARK_s}`
       let regex_re =
@@ -119,7 +122,8 @@ const I_o =
         ]
           .forEach
           (
-            match_a => {
+            match_a =>
+            {
               const exit_s =
                 match_a[0]
               const index_s =
@@ -162,13 +166,16 @@ const I_o =
       aside_o,   //: empty when 'exit'
       lang_o,    //:
       way_s,     //: 'exit' | 'enter'
-    ) => {
+    ) =>
+    {
       lang_o
         .aside_a
         .forEach
         (
-          step_s => {
-            if (!aside_o[`${step_s}`]) {
+          step_s =>
+          {
+            if (!aside_o[`${step_s}`])
+            {
               aside_o[`${step_s}`] = []
             }
             let return_a =
@@ -196,16 +203,18 @@ const I_o =
     (
       step_s,
       lang_o,
-    ) => {
+    ) =>
+    {
       const regex_ =
         lang_o
           .regex_o
         [`${step_s}_a`]
       if
-        (
+      (
         Array
           .isArray(regex_)
-      ) {
+      )
+      {
         return (
           new RegExp(`\\b(${regex_.join('|')})(?!=)\\b`, 'g')
         )
@@ -226,12 +235,14 @@ const I_o =
       code_s,
       lang_o,
       order_s,    //:
-    ) => {
+    ) =>
+    {
       lang_o
       [`${order_s}_a`]
         .forEach
         (
-          step_s => {
+          step_s =>
+          {
             let bound_s = ''
             const at_n =
               step_s
@@ -263,7 +274,8 @@ const I_o =
               .split(regex_re)
               .forEach
               (
-                split_s => {
+                split_s =>
+                {
                   replace_s +=
                     regex_re
                       .test(split_s)
@@ -289,7 +301,8 @@ const I_o =
     (
       code_s,
       lang_o,
-    ) => {
+    ) =>
+    {
       let acode_s = ''
       let line_n = 1
       code_s
@@ -299,7 +312,8 @@ const I_o =
           (
             line_s,
             at_n
-          ) => {
+          ) =>
+          {
             const class_s =
               lang_o
                 .hiline_a

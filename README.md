@@ -12,10 +12,10 @@ A lightning-fast and light-weight highlighter suitable for my own quirky coding 
   * CSS stylesheets (...soon)
   * HTML (...soon)
   * Nunjucks templates (...soon)
-+ smartly _ilites_ background and/or front, with semi-transparent colors
-+ _ilites_ line on cursor hover
++ _ilites_ background and/or front, with semi-transparent colors
++ _ilites_ lines on cursor hover
 + _ilites_ also specific lines on-demand for a programmatically specified file
-+ _ilites_ also any clicked line (which can be toggled later) by underscoring it
++ _ilites_ any clicked line (which can be toggled later) by underscoring it
 + covers only the specific properties of these languages/tools I use (but easy to augment)
 + generate ultra lightweight markup (e.g. `<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>`)
 + beta release, not production ready
@@ -32,7 +32,7 @@ VIsit [iliter page]
 
 ### Credit
 
-Searching for a lightweight highlighter to replace either Prism.js or Highlight.js, I found [Syntax], a clever 42 lines script by Victor Ribeiro. I developed and refined his idea of a multi pass processing to make my own __iliter__. It's a few lines more (!), but only a few tens of millisecond to process hundred of lines.
+Searching for a lightweight highlighter to replace either Prism.js or Highlight.js, I found [Syntax], a clever 42 lines script by Victor Ribeiro. I developed and refined his idea of a multi pass processing to develop my own __iliter__. It's a few lines more (!), but only a few tens of millisecond to process hundred of lines.
 
 #### Tip
 

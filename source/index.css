@@ -27,6 +27,7 @@
   {
     flex-basis: 60%;
   }
+  
   #color_select
   {
     flex-basis: 10%;
@@ -36,4 +37,3 @@
   {
     color: var(--c_ilite_12);
   }
-  
