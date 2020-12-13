@@ -114,6 +114,9 @@ CSS_o
 {
   //=== first ===
   block_re: /(\/\*.*?\*\/)/gms,          //: /*Comment*/
+  lit_re:   /(`[^\u0060]*`)/gms,         //: `template String`
+  apos_re:  /('[^\u0027]*')/g,           //: 'String'
+  quot_re:  /("[^\u0022]*")/g,           //: "String"
   CHILD_re: /(>)/g,                      //!!! upper case to avoid clash with ch unit
   //=== step ===
   res_a:   CSS_o.reserved_a,    //:
@@ -138,6 +141,9 @@ CSS_o
   .aside_a =        //!!! order matters
 [
   'block',
+  'lit',
+  'apos',
+  'quot',
   'CHILD',
 ]
 
