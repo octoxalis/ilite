@@ -46,7 +46,7 @@ code li::marker
   display: inline-block;
   -webkit-select: none;
   font-size: 80%;        /* for 4 digits number */
-  color: var(--c_ilite_ne);
+  color: var(--c_ilite_hi);
   opacity: .7;
 }
 
@@ -77,53 +77,61 @@ __                     {font-style:normal}
 }
 
 
+
+/* === FRONT === */
+.i_dec,
+__                     {color:var(--c_ilite_40)}
+.i_op,
+__                     {color:var(--c_ilite_120)}
+.i_cont,
+.i_prop,
+__                     {color:var(--c_ilite_200)}
+.i_punct,
+__                     {color:var(--c_ilite_240)}
+.i_uv,
+.i_var,
+__                     {color:var(--c_ilite_280)}
+.i_res,
+__                     {color:var(--c_ilite_320)}
+
+
+
+
+.i_type,  /*: JS */
+.i_unit,  /*: CSS */
+__                     {color:var(--c_ilite_80)}
+__                     {color:var(--c_ilite_100)}
+.i_loop,  /*: JS */
+__                     {color:var(--c_ilite_160)}
+.i_temp,  /*: JS */
+.i_sel,   /*: CSS */
+.i_CHILD, /*: CSS */
+__                     {color:var(--c_ilite_0)}
+
+
+.i_log,
+__                     {color:var(--c_ilite_0_hi)}
+
+
 /* === BACKGROUND === */
 
 .i_block,
 .i_line,
-__                     {background:var(--c_ilite_ne); opacity:.33}
+__                     {background:var(--c_ilite_hi); opacity:.33}
+
+.i_num,
+__                     {background:var(--c_ilite__300)}
 
 .i_apos,
 .i_quot,
-__                     {background:var(--c_ilite_3)}
-.i_lit,
-__                     {background:var(--c_ilite_2)}
-
-.i_num,
-__                     {background:var(--c_ilite_1)}
+__                     {background:var(--c_ilite__180)}
 
 
 
-
-/* === FRONT === */
-
-.i_uv,
-__                     {color:var(--c_ilite_12)}
+.i_lit,  /*: JS */
+__                     {background:var(--c_ilite__100)}
 
 
-.i_op,
-__                     {color:var(--c_ilite_8)}
-.i_punct,
-__                     {color:var(--c_ilite_11)}
-.i_temp,
-__                     {color:var(--c_ilite_13)}
-
-
-.i_dec,
-__                     {color:var(--c_ilite_6)}
-.i_loop
-__                     {color:var(--c_ilite_9)}
-.i_cont,
-__                     {color:var(--c_ilite_10)}
-
-
-.i_type,
-__                     {color:var(--c_ilite_7)}
-.i_prop,
-__                     {color:var(--c_ilite_12)}
-.i_res,
-__                     {color:var(--c_ilite_13)}
-
-
-.i_log,
-__                     {color:var(--c_ilite_5)}
+/* === BORDER === */
+.i_node,
+__                     {border-bottom: 1px solid var(--c_ilite_0)}

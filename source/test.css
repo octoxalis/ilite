@@ -1,0 +1,40 @@
+:root
+{
+  --custom_var: 10px;
+}
+
+code
+{
+  margin: 2rem;
+}
+
+#node_id
+{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 1vw;
+  width: 50%;
+  max-width: 20ch;
+  color: hsla( var(--hue) 50% 60%/.5);
+  background: hsla( var(--hue) 50% 10% / .5);
+  font: var(--font_body);
+  font-size: 120%;
+  border: 1px solid hsla( var(--hue) 20% 60%/.5);
+  transform: scale(.5);
+  filter: saturate(2);
+}
+
+.i_log,
+.i_log.unseen,
+.i_log > button,
+__                     {color:var(--c_ilite_0_hi)}
+
+article,
+main,
+[data-id^="data"],
+button[data-id^="data"]
+{
+  width: calc( var(--i_number) + 10 * 1% );
+}

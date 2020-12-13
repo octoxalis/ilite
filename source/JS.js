@@ -145,7 +145,7 @@ JS_o
 
 
 
-//=== VARIABLE ===//
+//=== DECLARATION ===//
 JS_o
   .declare_a =
 [

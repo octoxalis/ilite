@@ -261,7 +261,7 @@ const I_o =
             let regex_a =
               lang_o
                 .regex_o
-              [`${step_s}_a`]
+                [`${step_s}_a`]
             const regex_re =
               Array.isArray(regex_a)
                 ?
@@ -269,7 +269,8 @@ const I_o =
                 :
                 lang_o
                   .regex_o
-                [`${step_s}_re`]; console.log(regex_re)
+                  [`${step_s}_re`]  
+            ;console.log( regex_re )
             code_s
               .split(regex_re)
               .forEach
