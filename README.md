@@ -2,14 +2,14 @@
 
 __Another (latin: aliter) kind of source highlighter__
 
-A lightning-fast and light-weight highlighter suitable for my own quirky coding style.
+A lightning-fast and light-weight highlighter suitable for my own coding style (but easily adaptable to any other one).
 
 
 ## Main features
 
 + _ilites_ (sic) only the following sources:
   * JavaScript
-  * CSS stylesheets (...soon)
+  * CSS stylesheets
   * HTML (...soon)
   * Nunjucks templates (...soon)
 + _ilites_ background and/or front, with semi-transparent colors
@@ -18,12 +18,16 @@ A lightning-fast and light-weight highlighter suitable for my own quirky coding 
 + _ilites_ any clicked line (which can be toggled later) by underscoring it
 + covers only the specific properties of these languages/tools I use (but easy to augment)
 + generate ultra lightweight markup (e.g. `<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>`)
-+ beta release, not production ready
++ __iliter__ is able to differentiate as many language reserved words or constructs you wish, if you know how to write a RegExp for it (!)
++ easily extendable to any language
+
+
+NB: Please consider this sofware as beta release, not production ready.
 
 
 ## Demo site
 
-VIsit [iliter page]
+Visit [iliter page]
 
 + select a local file to be _ilited_
 + change the font size entering a positive number value

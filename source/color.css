@@ -33,6 +33,7 @@
 --c_ilite_240: hsla( calc( var(--c_hue_h) + 240 ) var(--c_sat_hi_4) var(--c_lum_hi_2) /1 );
 --c_ilite_280: hsla( calc( var(--c_hue_h) + 280 ) var(--c_sat_hi_4) var(--c_lum_hi_2) /1 );
 --c_ilite_320: hsla( calc( var(--c_hue_h) + 320 ) var(--c_sat_hi_4) var(--c_lum_hi_2) /1 );
+--c_ilite_340: hsla( calc( var(--c_hue_h) + 340 ) var(--c_sat_hi_4) var(--c_lum_hi_2) /1 );
 
 
 

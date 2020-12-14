@@ -6,6 +6,20 @@ const gt_s = '>'
 const LT_s = '&lt;'
 const lt_s = '<'
 
+function try__v
+()
+{
+  console
+    .log( 'Give me a try!' )
+}
+
+const object_o = new Object( null )
+
+for ( at_n = 0; at_n < 3; ++at_n )
+{
+  let dummy_s = 'OK'
+}
+
 let inc_n = 1
 //-- ++inc_n
 //-- inc_n++

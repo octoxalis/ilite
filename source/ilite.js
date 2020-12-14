@@ -136,7 +136,8 @@ const I_o =
                   )
               let enter_s =
                 `<${I_o.TAG_s} class="i_${step_s}">${escape_s}</${I_o.TAG_s}>`
-              if (lang_o.callback_f) {
+              if ( lang_o.callback_f )
+              {
                 enter_s =
                   lang_o
                     .callback_f
@@ -265,12 +266,12 @@ const I_o =
             const regex_re =
               Array.isArray(regex_a)
                 ?
-                new RegExp(`${bound_s}(${regex_a.join('|')})(?!=)${bound_s}`, 'g')    //: (?!=) to avoid tag attribute
+                new RegExp(`${bound_s}(${regex_a.join('|')})(?!=)${bound_s}`, 'g')
                 :
                 lang_o
                   .regex_o
                   [`${step_s}_re`]  
-            ;console.log( regex_re )
+            ;console.log( `${step_s}: ${regex_re}` )
             code_s
               .split(regex_re)
               .forEach
@@ -290,6 +291,18 @@ const I_o =
               replace_s
               ||
               code_s
+          //.......................
+          if ( lang_o.callback_f )
+          {
+            code_s =
+              lang_o
+                .callback_f
+                (
+                  code_s,
+                  step_s
+                )
+          }
+      //.......................
           }
         )
       return code_s

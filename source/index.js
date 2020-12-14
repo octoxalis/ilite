@@ -1,4 +1,27 @@
-//-- const IND_o = new Object( null )
+const IND_o = new Object( null )
+
+
+IND_o
+  .lang_o = null
+
+
+
+IND_o
+  .lang__o =
+(
+  ext_s
+) =>
+{
+  const map_s =
+  {
+    ['.js']:   JS_o,
+    ['.css']:  CSS_o,
+    ['.njk']:  NJK_o,
+    ['.html']: HTML_o,
+  }
+  return map_s[ext_s]
+}
+
 
 
 IND_o
@@ -7,6 +30,11 @@ IND_o
   code_s
 ) =>
 {
+  if ( !IND_o.lang_o )
+  {
+    return
+  }
+  //>
   console.time( 'ilite' )
 
   code_s =
@@ -109,6 +137,32 @@ void function
           )
         reader_o
           .readAsText( file_o )
+        const name_s =
+          file_a
+            [0]
+            .name
+        const ext_s =
+          name_s
+            .slice
+            (
+              name_s
+                .lastIndexOf( '.' )
+            )
+        const ilite_o =
+          IND_o
+            .lang__o( ext_s )
+        if ( !ilite_o )
+        {
+          document
+            .querySelector('#code')
+            .innerHTML =
+              '<p>Iliter can not ilite this type of file: please select a js|css|njk|html file</p>'
+          return
+        }
+        //>
+        IND_o.lang_o =
+          ilite_o
+            .lang_o
       }
     )
 
