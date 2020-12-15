@@ -64,16 +64,16 @@ const I_o =
   exit__s:
     (
       code_s,
-      step_s,
+      regex_s,
       aside_a,
       lang_o
     ) =>
     {
       let mark_s =
-        `${I_o.MARK_s}${step_s}${I_o.MARK_s}`
+        `${I_o.MARK_s}${regex_s}${I_o.MARK_s}`
       let regex_re =
         lang_o
-          .regex_o[`${step_s}_re`]
+          .regex_o[`${regex_s}_re`]
       let index_n = -1
         ;[
           ...code_s.matchAll(regex_re)
@@ -108,13 +108,13 @@ const I_o =
   enter__s:
     (
       code_s,
-      step_s,
+      regex_s,
       aside_a,
       lang_o,
     ) =>
     {
       let mark_s =
-        `${I_o.MARK_s}${step_s}${I_o.MARK_s}`
+        `${I_o.MARK_s}${regex_s}${I_o.MARK_s}`
       let regex_re =
         new RegExp(`${mark_s}([₀-₉]+)${mark_s}`, 'gms')
         ;[
@@ -135,16 +135,12 @@ const I_o =
                     aside_a[+index_s]    //: Number cast
                   )
               let enter_s =
-                `<${I_o.TAG_s} class="i_${step_s}">${escape_s}</${I_o.TAG_s}>`
-              if ( lang_o.callback_f )
+                `<${I_o.TAG_s} class="i_${regex_s}">${escape_s}</${I_o.TAG_s}>`
+              if ( lang_o[`${regex_s}__s`] )
               {
                 enter_s =
                   lang_o
-                    .callback_f
-                    (
-                      enter_s,
-                      step_s
-                    )
+                      [`${regex_s}__s`]( enter_s )
               }
               code_s =
                 code_s
@@ -173,24 +169,24 @@ const I_o =
         .aside_a
         .forEach
         (
-          step_s =>
+          regex_s =>
           {
-            if (!aside_o[`${step_s}`])
+            if (!aside_o[`${regex_s}`])
             {
-              aside_o[`${step_s}`] = []
+              aside_o[`${regex_s}`] = []
             }
             let return_a =
               I_o
               [`${way_s}__s`]
                 (
                   code_s,
-                  step_s,
-                  aside_o[`${step_s}`],
+                  regex_s,
+                  aside_o[`${regex_s}`],
                   IND_o.lang_o
                 )
             code_s =
               return_a[0]
-            aside_o[`${step_s}`] =
+            aside_o[`${regex_s}`] =
               return_a[1]
           }
         )
@@ -202,14 +198,14 @@ const I_o =
 
   regex__re:
     (
-      step_s,
+      regex_s,
       lang_o,
     ) =>
     {
       const regex_ =
         lang_o
           .regex_o
-        [`${step_s}_a`]
+        [`${regex_s}_a`]
       if
       (
         Array
@@ -224,7 +220,7 @@ const I_o =
       return (
         lang_o
           .regex_o
-        [`${step_s}_re`]
+        [`${regex_s}_re`]
       )
     }
   ,
@@ -242,16 +238,16 @@ const I_o =
       [`${order_s}_a`]
         .forEach
         (
-          step_s =>
+          regex_s =>
           {
             let bound_s = ''
             const at_n =
-              step_s
+              regex_s
                 .indexOf(I_o.BOUND_s)
             if (at_n > -1) {
               bound_s = '\\b'
-              step_s =
-                step_s
+              regex_s =
+                regex_s
                   .slice
                   (
                     0,
@@ -262,7 +258,7 @@ const I_o =
             let regex_a =
               lang_o
                 .regex_o
-                [`${step_s}_a`]
+                [`${regex_s}_a`]
             const regex_re =
               Array.isArray(regex_a)
                 ?
@@ -270,8 +266,8 @@ const I_o =
                 :
                 lang_o
                   .regex_o
-                  [`${step_s}_re`]  
-            ;console.log( `${step_s}: ${regex_re}` )
+                  [`${regex_s}_re`]  
+            ;console.log( `${regex_s}: ${regex_re}` )
             code_s
               .split(regex_re)
               .forEach
@@ -282,7 +278,7 @@ const I_o =
                     regex_re
                       .test(split_s)
                       ?
-                      `<${I_o.TAG_s} class="i_${step_s}">${split_s}</${I_o.TAG_s}>`
+                      `<${I_o.TAG_s} class="i_${regex_s}">${split_s}</${I_o.TAG_s}>`
                       :
                       split_s
                 }
@@ -291,18 +287,12 @@ const I_o =
               replace_s
               ||
               code_s
-          //.......................
-          if ( lang_o.callback_f )
-          {
-            code_s =
-              lang_o
-                .callback_f
-                (
-                  code_s,
-                  step_s
-                )
-          }
-      //.......................
+            if ( lang_o[`${regex_s}__s`] )
+            {
+              code_s =
+                lang_o
+                    [`${regex_s}__s`]( code_s )
+            }
           }
         )
       return code_s
