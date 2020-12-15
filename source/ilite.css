@@ -112,8 +112,11 @@ __                     {color:var(--c_ilite_0)}
 
 
 .i_log,
+.i_reg,
 __                     {color:var(--c_ilite_0_hi)}
 
+.i_temp,
+__                     {color:red}
 
 /* === BACKGROUND === */
 

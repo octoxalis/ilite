@@ -178,33 +178,36 @@ JS_o
     regex_o:
       {
         //=== aside ===
+        reg_re:   /(\/.+\/[gimsu]+)/g,         //: RegExp
         line_re:  /((?:^|\s)\/\/(.+?)$)/gms,   //: //Comment
         block_re: /(\/\*.*?\*\/)/gms,          //: /*Comment*/
         lit_re:   /(`[^\u0060]*`)/gms,         //: `template String`
         apos_re:  /('[^\u0027]*')/g,           //: 'String'
         quot_re:  /("[^\u0022]*")/g,           //: "String"
         //=== step ===
-        res_a:   JS_o.reserved_a,    //:
-        loop_a:  JS_o.loop_a,        //:
-        cont_a:  JS_o.control_a,     //:
-        type_a:  JS_o.type_a,        //:
-        dec_a:   JS_o.declare_a,     //:
-        prop_a:  JS_o.property_a,    //:
-        group_a: JS_o.group_a,       //:
-        punct_a: JS_o.punctuation_a, //:
-        op_a:    JS_o.operator_a,    //:
+        res_a:   JS_o.reserved_a,
+        loop_a:  JS_o.loop_a,
+        cont_a:  JS_o.control_a,
+        type_a:  JS_o.type_a,
+        dec_a:   JS_o.declare_a,
+        prop_a:  JS_o.property_a,
+        group_a: JS_o.group_a,
+        punct_a: JS_o.punctuation_a,
+        op_a:    JS_o.operator_a,
       
-        num_re: /\b([-+]?[0-9]*\.?[0-9]+)\b/g,            //: Number
+        num_re:  /\b([-+]?[0-9]*\.?[0-9]+)\b/g,        //: Number
         //: user defined
-        uv_re:  /\b(\w+_{1,2}[abcefnorsUvY]e?)\b/g,   //: user variable (e.g. 'name_s')
-        log_re: /(console\s*\.[^(]+)/gms,                       //: console
+        temp_re: /(\{\{[^\}]+?\}\})/gms,               //: NJK template variable
+        uv_re:   /\b(\w+_{1,2}[abcefnorsUvY]e?)\b/g,   //: user variable (e.g. 'name_s')
+        log_re:  /(console\s*\.[^(]+)/gms,             //: console
         //=== post ===
       }
     ,
 
 
-    aside_a:
+    aside_a:    //!!! KEEP ORDER
       [
+        'reg',
         'line',
         'block',
         'lit',
@@ -214,7 +217,7 @@ JS_o
     ,
 
 
-    ante_a:
+    ante_a:    //!!! KEEP ORDER
       [
         'op_b',
         'res_b',    //: see I_o.BOUND_s
@@ -223,7 +226,7 @@ JS_o
         'type_b',
         'dec_b',
         'prop_b',
-        'uv',
+        'temp',
         'log',
         'num',
       ]
@@ -231,7 +234,7 @@ JS_o
 
 
 
-    post_a:
+    post_a:    //!!! KEEP ORDER
       []
     ,
 

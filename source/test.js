@@ -6,6 +6,8 @@ const gt_s = '>'
 const LT_s = '&lt;'
 const lt_s = '<'
 
+const template_s = {{ I_o.variable_s }}    //: NJK variable replaced at build
+
 function try__v
 ()
 {
@@ -37,6 +39,7 @@ op_n += 10 % 2
 let lit_re  = /(`[^\u0060]*`)/gms       //: `template String`
 let apos_re = /('[^\u0027]*')/g         //: 'String'
 let quot_re = /("[^\u0022]*")/g         //: "String"
+let reg_re =  /(\/.+\/[gimsu]+)/g       //: RegExp
 
 //!!! check
 let along_s =
