@@ -1,25 +1,28 @@
 # ILITER
 
-__Another (latin: aliter) kind of source highlighter__
+__Another kind of source highlighter__
 
-A lightning-fast and light-weight highlighter suitable for my own coding style (but easily adaptable to any other one).
+A lightning-fast, light-weight, smart highlighter.
+The name __iliter__ is a neologism from the latin word _aliter_ (another) and the english word _highlight_.
 
 
 ## Main features
 
-+ _ilites_ (sic) only the following sources:
-  * JavaScript
-  * CSS stylesheets
-  * HTML (...soon)
-  * Nunjucks templates (...soon)
-+ _ilites_ background and/or front, with semi-transparent colors
-+ _ilites_ lines on cursor hover
-+ _ilites_ also specific lines on-demand for a programmatically specified file
-+ _ilites_ any clicked line (which can be toggled later) by underscoring it
-+ covers only the specific properties of these languages/tools I use (but easy to augment)
-+ generate ultra lightweight markup (e.g. `<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>`)
-+ __iliter__ is able to differentiate as many language reserved words or constructs you wish, if you know how to write a RegExp for it (!)
-+ easily extendable to any language
+-  _ilites_ (sic) only the following sources:
+    - JavaScript
+    - CSS stylesheets
+    - HTML
+    - Nunjucks templates
+- _ilites_ background and/or front, with semi-transparent colors
+-  _ilites_ lines on cursor hover
+-  _ilites_ also specific lines according to a line number Array
+-  _ilites_ any clicked line (which can be toggled later) by underscoring it
+-  covers only the specific properties of these languages/tools I use (but easy to extend)
+-  generate ultra lightweight markup:
+```<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>```
+-  __iliter__ is able to differentiate as many language reserved words or constructs as you wish,
+if you know how to write a RegExp for it (!)
+- easily extendable to any language
 
 
 NB: Please consider this sofware as beta release, not production ready.
@@ -30,13 +33,15 @@ NB: Please consider this sofware as beta release, not production ready.
 Visit [iliter page]
 
 + select a local file to be _ilited_
-+ change the font size entering a positive number value
-+ change the primary color entering a positive number value in range [0 - 360]
++ if you want to change the font size, enter a positive number value
++ if you want to change the primary color, enter a positive number value in range [0 - 360]
 
 
 ### Credit
 
-Searching for a lightweight highlighter to replace either Prism.js or Highlight.js, I found [Syntax], a clever 42 lines script by Victor Ribeiro. I developed and refined his idea of a multi pass processing to develop my own __iliter__. It's a few lines more (!), but only a few tens of millisecond to process hundred of lines.
+Searching for a lightweight highlighter to replace either Prism.js or Highlight.js, I found [Syntax], a clever 42 lines script by Victor Ribeiro.
+I refined his idea of a multi pass processing to develop my own __iliter__.
+It's a few lines more (!), but only a few tens of millisecond to process hundred of lines.
 
 #### Tip
 
