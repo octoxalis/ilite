@@ -429,46 +429,4 @@ const I_o =
   }
   ,
 
-
-
-  listener__v:
-  () =>
-  {
-    const code_e =
-      document
-      .querySelector( `#${I_o.listen_s}` )
-    code_e
-      .addEventListener
-        (
-          'click',
-          click_o =>
-            {
-              const li_e =
-              click_o
-                  .target
-                  .closest('LI')
-              if ( li_e )
-              {
-                li_e
-                .classList
-                .toggle( 'i_spot' )
-              }
-            }
-            
-        )
-    }
-  ,
-  
-
-
-  listen__v:
-  (
-    id_s      //: code block ID
-  ) => 
-  {
-    I_o.listen_s =
-      id_s
-  }
-  ,
-
 }

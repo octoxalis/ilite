@@ -23,12 +23,12 @@
     padding: .5rem;
   }
   
-  #file_select
+  #source_e
   {
     flex-basis: 60%;
   }
   
-  #color_select
+  #color_e
   {
     flex-basis: 10%;
   }
