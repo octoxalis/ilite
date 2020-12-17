@@ -14,6 +14,9 @@ const I_o =
   listen_s: '',    //: code block ID
 
 
+  lang_o: null,
+
+
   escape__s:  //: escape ilite tag chars [< = " /]
   (
     code_s
@@ -77,15 +80,15 @@ const I_o =
     code_s,
     regex_s,
     aside_a,
-    lang_o
   ) =>
   {
     let mark_s =
       `${I_o.MARK_s}${regex_s}${I_o.MARK_s}`
     let regex_re =
-      lang_o
-        .regex_o
-        [`${regex_s}_re`]
+      I_o.
+        lang_o
+          .regex_o
+          [`${regex_s}_re`]
     let index_n = -1
     ;[ ...code_s.matchAll( regex_re ) ]
       .forEach
@@ -121,7 +124,6 @@ const I_o =
     code_s,
     regex_s,
     aside_a,
-    lang_o,
   ) =>
   {
     let mark_s =
@@ -154,10 +156,16 @@ const I_o =
               )
           let enter_s =
             `<${I_o.TAG_s} class="i_${regex_s}">${escape_s}</${I_o.TAG_s}>`
-          if ( lang_o[`${regex_s}__s`] )
+          if
+          ( 
+            I_o
+              .lang_o
+              [`${regex_s}__s`]
+          )
           {
             enter_s =
-              lang_o
+              I_o
+                .lang_o
                 [ `${regex_s}__s` ]( enter_s )
           }
           code_s =
@@ -179,35 +187,34 @@ const I_o =
   (
     code_s,
     aside_o,   //: empty when 'exit'
-    lang_o,    //:
     way_s,     //: 'exit' | 'enter'
   ) =>
   {
-    lang_o
+    I_o
+      .lang_o
       .aside_a
-      .forEach
-      (
-        regex_s =>
-        {
-          if (!aside_o[`${regex_s}`])
+        .forEach
+        (
+          regex_s =>
           {
-            aside_o[`${regex_s}`] = []
+            if (!aside_o[`${regex_s}`])
+            {
+              aside_o[`${regex_s}`] = []
+            }
+            let return_a =
+              I_o
+                [`${way_s}__s`]
+                (
+                  code_s,
+                  regex_s,
+                  aside_o[`${regex_s}`],
+                )
+            code_s =
+              return_a[0]
+            aside_o[`${regex_s}`] =
+              return_a[1]
           }
-          let return_a =
-            I_o
-              [`${way_s}__s`]
-              (
-                code_s,
-                regex_s,
-                aside_o[`${regex_s}`],
-                IND_o.lang_o
-              )
-          code_s =
-            return_a[0]
-          aside_o[`${regex_s}`] =
-            return_a[1]
-        }
-      )
+        )
     return [code_s, aside_o]
   }
   ,
@@ -217,11 +224,11 @@ const I_o =
   regex__re:
   (
     regex_s,
-    lang_o,
   ) =>
   {
     const regex_ =
-      lang_o
+      I_o
+        .lang_o
         .regex_o
         [`${regex_s}_a`]
     if
@@ -240,7 +247,8 @@ const I_o =
     }
     //>
     return (
-      lang_o
+      I_o
+        .lang_o
         .regex_o
         [`${regex_s}_re`]
     )
@@ -252,75 +260,83 @@ const I_o =
   step__s:
   (
     code_s,
-    lang_o,
     order_s,    //:
   ) =>
   {
-    lang_o
-    [`${order_s}_a`]
-      .forEach
-      (
-        regex_s =>
-        {
-          let bound_s = ''
-          const at_n =
-            regex_s
-              .indexOf( I_o.BOUND_s )
-          if ( at_n > -1 )
+    I_o
+      .lang_o
+      [`${order_s}_a`]
+        .forEach
+        (
+          regex_s =>
           {
-            bound_s =
-              '\\b'
-            regex_s =
+            let bound_s = ''
+            const at_n =
               regex_s
-                .slice
-                (
-                  0,
-                  -I_o.BOUND_s.length
-                )
-          }
-          let replace_s = ''
-          let regex_a =
-            lang_o
-              .regex_o
-              [ `${regex_s}_a` ]
-          const regex_re =
-            Array.isArray( regex_a ) ?
-              new RegExp
-                (
-                  `${bound_s}(${regex_a.join('|')})(?!=)${bound_s}`,
-                  'g'
-                )
-              :
-              lang_o
+                .indexOf( I_o.BOUND_s )
+            if ( at_n > -1 )
+            {
+              bound_s =
+                '\\b'
+              regex_s =
+                regex_s
+                  .slice
+                  (
+                    0,
+                    -I_o.BOUND_s.length
+                  )
+            }
+            let replace_s = ''
+            let regex_a =
+              I_o
+                .lang_o
                 .regex_o
-                [ `${regex_s}_re` ]  
-          ;console.log( `${regex_s}: ${regex_re}` )
-          code_s
-            .split( regex_re )
-            .forEach
-            (
-              split_s =>
-              {
-                replace_s +=
-                  regex_re
-                    .test( split_s ) ?
-                      `<${I_o.TAG_s} class="i_${regex_s}">${split_s}</${I_o.TAG_s}>`
-                      :
-                      split_s
-              }
-            )
-          code_s =
-            replace_s
-            ||
+                [ `${regex_s}_a` ]
+            const regex_re =
+              Array.isArray( regex_a ) ?
+                new RegExp
+                  (
+                    `${bound_s}(${regex_a.join('|')})(?!=)${bound_s}`,
+                    'g'
+                  )
+                :
+                I_o
+                  .lang_o
+                  .regex_o
+                  [ `${regex_s}_re` ]  
+            ;console.log( `${regex_s}: ${regex_re}` )
             code_s
-          if ( lang_o[ `${regex_s}__s` ] )
-          {
+              .split( regex_re )
+              .forEach
+              (
+                split_s =>
+                {
+                  replace_s +=
+                    regex_re
+                      .test( split_s ) ?
+                        `<${I_o.TAG_s} class="i_${regex_s}">${split_s}</${I_o.TAG_s}>`
+                        :
+                        split_s
+                }
+              )
             code_s =
-              lang_o
-                [`${regex_s}__s`]( code_s )
+              replace_s
+              ||
+              code_s
+            if
+            (
+              I_o
+                .lang_o
+                [ `${regex_s}__s` ]
+            )
+            {
+              code_s =
+                I_o
+                  .lang_o
+                  [`${regex_s}__s`]( code_s )
+            }
           }
-        }
-      )
+        )
     return code_s
   }
   ,
@@ -330,7 +346,6 @@ const I_o =
   line__s:
   (
     code_s,
-    lang_o,
   ) =>
   {
     let acode_s = ''
@@ -345,7 +360,8 @@ const I_o =
         ) =>
         {
           const class_s =
-            lang_o
+            I_o
+              .lang_o
               .hiline_a
               .includes( at_n + 1 ) ?   //: 1-indexed
                 ' class="i_hi"'
@@ -361,7 +377,60 @@ const I_o =
 
 
 
-  
+  ilite__v:
+  (
+    code_s,
+    lang_o
+  ) =>
+  {
+    console.time( 'ilite' )
+    //---------------------
+    I_o.lang_o =
+      lang_o
+    code_s =
+      code_s
+        .trim()
+    const exit_o =
+      I_o
+        .aside__s
+        (
+          code_s,
+          {},      //: aside_o
+          'exit'
+        )
+    code_s =
+      I_o
+        .step__s
+        (
+          exit_o[0],
+          'ante'
+        )
+    const enter_o =
+      I_o
+        .aside__s
+        (
+          code_s,
+          exit_o[1],
+          'enter'
+        )
+    code_s =
+      I_o
+        .step__s
+        (
+          enter_o[0],
+          'post'
+        )
+    //------------------------
+    console.timeEnd( 'ilite' )
+    return (
+      I_o
+        .line__s( code_s )
+    )
+  }
+  ,
+
+
+
   listener__v:
   () =>
   {

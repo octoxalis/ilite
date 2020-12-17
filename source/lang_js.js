@@ -210,7 +210,7 @@ JS_o
         'line',
         'block',
         'reg',
-        'lit',
+        'lit',    //--> callback
         'apos',
         'quot',
       ]
