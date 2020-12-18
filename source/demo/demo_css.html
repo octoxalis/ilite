@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ILITE</title>
+  <link rel="stylesheet" href="../css/color.css"/>
+  <link rel="stylesheet" href="../css/font.css"/>
+  <link rel="stylesheet" href="../css/ilite.css"/>
+  <link rel="stylesheet" href="../css/index.css"/>
+</head>
+
+<body class="body">
+  <div id="input">
+    <input id="source_e" type="file"/>
+    <label for="fontsize_e">font size</label>
+    <input id="fontsize_e" type="number" pattern="[0-9]*\.?[0-9]{0,2}" step=".1" value="1.5" />
+    <label for="color_e">primary color</label>
+    <input id="color_e" type="number" pattern="[1-9][0-9]{0,2}"  step="6" value="220" />
+  </div>
+  <code id="ilite_e">
+    ilite by <a href="https://github.com/octoxalis/ilite">octoxalis</a>
+  </code>
+  <script src="../js/ilite.js" defer></script>
+  <script src="../lang/lang_js.js" defer></script>
+  <script src="../lang/lang_css.js" defer></script>
+  <script src="../lang/lang_njk.js" defer></script>
+  <script src="../lang/lang_html.js" defer></script>
+  <script src="../js/index.js" defer></script>
+  <script src="../js/demo_css.js" defer></script>
+</body>
+</html>

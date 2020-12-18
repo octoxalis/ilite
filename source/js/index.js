@@ -105,24 +105,40 @@ const IND_o =
         'load',
         event_o =>    //: handler
         {
-          document
-            .querySelector( `#${IND_o.code_s}` )
-            .innerHTML =
-              I_o
-                .ilite__v
-                (
-                  event_o
-                    .target
-                    .result,
-                  ilite_o
-                    .lang_o
-                )
           IND_o
-            .listenLine__v()
+            .ilite__v
+            (
+              event_o
+                .target
+                .result,
+              ilite_o
+                .lang_o
+            )
         }
       )
     reader_o
       .readAsText( file_o )
+  }
+  ,
+
+
+  ilite__v:
+  (
+    code_s,
+    lang_o
+  ) =>
+  {
+    document
+      .querySelector( `#${IND_o.code_s}` )
+      .innerHTML =
+        I_o
+          .ilite__v
+          (
+            code_s,
+            lang_o
+          )
+    IND_o
+      .listenLine__v()
   }
   ,
 

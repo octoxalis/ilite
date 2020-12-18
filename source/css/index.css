@@ -5,6 +5,15 @@
     margin: 0;
     padding: 0;
   }
+
+  main
+  {
+    display: flex;
+    flex-direction: column;
+    place-items:flex-start;
+    padding: 1rem;
+    width: 100%;
+  }
   
   #input
   {
@@ -15,8 +24,14 @@
     padding: .5rem;
     width: 100%;
     height: 6rem;
+  }
+  
+  main,
+  #input
+  {
     background: hsla(var(--c_hue_h) var(--c_sat_ne) var(--c_lum_hi_2)/1);
   }
+
 
   #input > *
   {

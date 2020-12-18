@@ -3,6 +3,7 @@
 __Another kind of source highlighter__
 
 A lightning-fast, light-weight, __interactive__ highlighter.
+
 The name __ilite__ is a neologism from the latin word _aliter_ (another) and the english word _highlight_.
 
 

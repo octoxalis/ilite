@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ILITE</title>
-  <link rel="stylesheet" href="color.css"/>
-  <link rel="stylesheet" href="font.css"/>
-  <link rel="stylesheet" href="ilite.css"/>
-  <link rel="stylesheet" href="index.css"/>
+  <link rel="stylesheet" href="css/color.css"/>
+  <link rel="stylesheet" href="css/font.css"/>
+  <link rel="stylesheet" href="css/ilite.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
 </head>
 
 <body class="body">
@@ -18,14 +18,24 @@
     <label for="color_e">primary color</label>
     <input id="color_e" type="number" pattern="[1-9][0-9]{0,2}"  step="6" value="220" />
   </div>
+  <main>
+    <h1>DEMOS</h1>
+    <ul>
+      <li><a href="demo/demo_js.html">JavaScript file</a></li>
+      <li><a href="demo/demo_css.html">CSS file</a></li>
+      <li><a href="demo/demo_html.html">HTML file</a></li>
+      <li><a href="demo/demo_njk.html">Nunjucks file</a></li>
+    </ul>
+    <p>Click (tap) any line to spot it!</p>
+  </main>
   <code id="ilite_e">
     ilite by <a href="https://github.com/octoxalis/ilite">octoxalis</a>
   </code>
-  <script src="ilite.js" defer></script>
-  <script src="lang_js.js" defer></script>
-  <script src="lang_css.js" defer></script>
-  <script src="lang_njk.js" defer></script>
-  <script src="lang_html.js" defer></script>
-  <script src="index.js" defer></script>
+  <script src="js/ilite.js" defer></script>
+  <script src="lang/lang_js.js" defer></script>
+  <script src="lang/lang_css.js" defer></script>
+  <script src="lang/lang_njk.js" defer></script>
+  <script src="lang/lang_html.js" defer></script>
+  <script src="js/index.js" defer></script>
 </body>
 </html>
