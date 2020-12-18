@@ -7,5 +7,5 @@ Referrer-Policy: same-origin
 Feature-Policy: fullscreen 'self';midi 'self';sync-xhr 'self';microphone 'self';camera 'self';magnetometer 'self';gyroscope 'self';
 X-Frame-Options: SAMEORIGIN
 X-XSS-Protection: 1;mode=block
-Timing-Allow-Origin: "https://iliter.netlify.app/"
-Content-Security-Policy: default-src https://iliter.netlify.app/ ; base-uri https://iliter.netlify.app/ ; font-src https://iliter.netlify.app/ ; connect-src https://iliter.netlify.app/ ; prefetch-src https://iliter.netlify.app/ ; img-src https://iliter.netlify.app/ ; frame-src https://iliter.netlify.app/ ; frame-ancestors https://iliter.netlify.app/ ; form-action https://iliter.netlify.app/ ; manifest-src https://iliter.netlify.app/ ; script-src-elem https://iliter.netlify.app/ ; script-src https://iliter.netlify.app/ ; object-src https://iliter.netlify.app/ ; style-src https://iliter.netlify.app/;
+Timing-Allow-Origin: "https://ilite.netlify.app/"
+Content-Security-Policy: default-src https://ilite.netlify.app/ ; base-uri https://ilite.netlify.app/ ; font-src https://ilite.netlify.app/ ; connect-src https://ilite.netlify.app/ ; prefetch-src https://ilite.netlify.app/ ; img-src https://ilite.netlify.app/ ; frame-src https://ilite.netlify.app/ ; frame-ancestors https://ilite.netlify.app/ ; form-action https://ilite.netlify.app/ ; manifest-src https://ilite.netlify.app/ ; script-src-elem https://ilite.netlify.app/ ; script-src https://ilite.netlify.app/ ; object-src https://ilite.netlify.app/ ; style-src https://ilite.netlify.app/;

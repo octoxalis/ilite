@@ -57,7 +57,7 @@ NJK_o
 
 
 NJK_o
-  .lang_o =
+  .lang_o =    //: language API
 {
   regex_o:
     {

@@ -97,7 +97,7 @@ CSS_o
 
 
 CSS_o
-  .lang_o =
+  .lang_o =    //: language API
   {
     regex_o:
       {

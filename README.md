@@ -1,9 +1,9 @@
-# ILITER
+# ILITE
 
 __Another kind of source highlighter__
 
-A lightning-fast, light-weight, smart highlighter.
-The name __iliter__ is a neologism from the latin word _aliter_ (another) and the english word _highlight_.
+A lightning-fast, light-weight, __interactive__ highlighter.
+The name __ilite__ is a neologism from the latin word _aliter_ (another) and the english word _highlight_.
 
 
 ## Main features
@@ -20,7 +20,7 @@ The name __iliter__ is a neologism from the latin word _aliter_ (another) and th
 -  covers only the specific properties of these languages/tools I use (but easy to extend)
 -  generate ultra lightweight markup:
 ```<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>```
--  __iliter__ is able to differentiate as many language reserved words or constructs as you wish,
+-  __ilite__ is able to differentiate as many language reserved words or constructs as you wish,
 if you know how to write a RegExp for it (!)
 - easily extendable to any language
 
@@ -30,7 +30,7 @@ NB: Please consider this sofware as beta release, not production ready.
 
 ## Demo site
 
-Visit [iliter page]
+Visit [ilite page]
 
 + select a local file to be _ilited_
 + if you want to change the font size, enter a positive number value
@@ -40,13 +40,14 @@ Visit [iliter page]
 ### Credit
 
 Searching for a lightweight highlighter to replace either Prism.js or Highlight.js, I found [Syntax], a clever 42 lines script by Victor Ribeiro.
-I refined his idea of a multi pass processing to develop my own __iliter__.
+
+I refined his idea of a multi pass processing to develop __ilite__.
 It's a few lines more (!), but only a few tens of millisecond to process hundred of lines.
 
 #### Tip
 
-Have a look at [iliter page] and inspect the console to see which **RegExp** are used and the amount of milliseconds to process the _ilited_ file: should be roughly around ten lines per millisecond (on my i7-6600 CPU computer).
+Have a look at [ilite page] and inspect the console to see which **RegExp** are used and the amount of milliseconds to process the _ilited_ file: should be roughly around ten lines per millisecond (on my i7-6600 CPU computer).
 
 
-[iliter page]: https://iliter.netlify.app
+[ilite page]: https://ilite.netlify.app
 [Syntax]: https://github.com/victorqribeiro/syntax

@@ -173,7 +173,7 @@ JS_o
 
 
 JS_o
-  .lang_o =
+  .lang_o =    //: language API
   {
     regex_o:
       {

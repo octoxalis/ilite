@@ -1,7 +1,10 @@
-//=== ilite.js === iliter main module
+//=== ilite.js === ilite main module
 
 const I_o =
 {
+  //~~lang_o,    //: language API
+
+
   TAG_s: 'i',    //: `<i class="i_dec">const</i>`
   MARK_s: '₊',     //: index number delimiter
   BOUND_s: '_b',   //: bound regex_s suffix
@@ -11,12 +14,8 @@ const I_o =
     sub_a:   [ '\u2080', '\u2081', '\u2082', '\u2083', '\u2084', '\u2085', '\u2086', '\u2087', '\u2088', '\u2089' ]
   },
 
-  listen_s: '',    //: code block ID
 
-
-  lang_o: null,
-
-
+  
   escape__s:  //: escape ilite tag chars [< = " /]
   (
     code_s
