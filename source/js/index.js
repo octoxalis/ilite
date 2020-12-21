@@ -74,7 +74,7 @@ const IND_o =
     if ( !ilite_o )
     {
       document
-        .querySelector( `#${IND_o.code_s}` )
+        .querySelector( `#${IND_o.ilite_s}` )
         .innerHTML =
           '<p>Iliter can not ilite this type of file: please select a js|css|njk|html file</p>'
       return
@@ -106,7 +106,7 @@ const IND_o =
         event_o =>    //: handler
         {
           IND_o
-            .ilite__v
+            .ilite__s
             (
               event_o
                 .target
@@ -122,17 +122,17 @@ const IND_o =
   ,
 
 
-  ilite__v:
+  ilite__s:
   (
     code_s,
     lang_o
   ) =>
   {
     document
-      .querySelector( `#${IND_o.code_s}` )
+      .querySelector( `#${IND_o.ilite_s}` )
       .innerHTML =
         I_o
-          .ilite__v
+          .ilite__s
           (
             code_s,
             lang_o
@@ -148,7 +148,7 @@ const IND_o =
   () =>
   {
     document
-      .querySelector( `#${IND_o.code_s}` )
+      .querySelector( `#${IND_o.ilite_s}` )
       .addEventListener
       (
         'click',
@@ -236,7 +236,7 @@ void function    //: main
 ()
 {
   IND_o
-    .code_s = 'ilite_e'
+    .ilite_s = 'ilite_e'
   IND_o
     .source__o( 'source_e' )    //: --> readFile__v
     .fontsize__o( 'fontsize_e' )

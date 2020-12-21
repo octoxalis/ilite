@@ -376,7 +376,7 @@ const I_o =
 
 
 
-  ilite__v:
+  ilite__s:
   (
     code_s,
     lang_o

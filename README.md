@@ -2,22 +2,24 @@
 
 __Another kind of source highlighter__
 
-A lightning-fast, light-weight, __interactive__ highlighter.
+A lightning-fast, light-weight and... __interactive__ highlighter.
 
 The name __ilite__ is a neologism from the latin word _aliter_ (another) and the english word _highlight_.
 
 
 ## Main features
 
--  _ilites_ (sic) only the following sources:
+-  truly <q>slim</q>: ilite minified core script is les than 2200 bytes and
+each language module around 1000 bytes
+-  language modules for the following source types:
     - JavaScript
     - CSS stylesheets
     - HTML
     - Nunjucks templates
-- _ilites_ background and/or front, with semi-transparent colors
+- _ilites_ (sic) background and/or front, with semi-transparent colors, easy to configure
 -  _ilites_ lines on cursor hover
--  _ilites_ also specific lines according to a line number Array
 -  _ilites_ any clicked line (which can be toggled later) by underscoring it
+-  _ilites_ specific lines according to a line number Array
 -  covers only the specific properties of these languages/tools I use (but easy to extend)
 -  generate ultra lightweight markup:
 ```<li><i class="i_dec">const</i> <i class="i_uv">I_o</i> =</li>```
@@ -48,6 +50,8 @@ It's a few lines more (!), but only a few tens of millisecond to process hundred
 #### Tip
 
 Have a look at [ilite page] and inspect the console to see which **RegExp** are used and the amount of milliseconds to process the _ilited_ file: should be roughly around ten lines per millisecond (on my i7-6600 CPU computer).
+
+If you use it, minify it: 
 
 
 [ilite page]: https://ilite.netlify.app
